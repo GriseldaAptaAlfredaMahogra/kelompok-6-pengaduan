@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeSpace | Ruang Aman Siswa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy: #171936;
+    --purple: #7762ed;
+    --purple-dark: #5544ca;
+    --teal: #39c9b5;
+    --coral: #ff897f;
+    --yellow: #ffd36b;
+    --ink: #242541;
+    --muted: #777990;
+    --bg: #f8f8ff;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 25px rgba(30,30,70,.04);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand-name span {
+    color: var(--purple);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-size: 14px;
+    font-weight: 700;
+    color: #55566e;
+    transition: .3s;
+}
+
+.nav-menu a:hover {
+    color: var(--purple);
+}
+
+.nav-menu .nav-button {
+    background: var(--purple);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 50px;
+}
+
+.nav-button:hover {
+    background: var(--purple-dark);
+}
+
+/* HERO */
+.hero {
+    min-height: 620px;
+    padding: 85px 8%;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 45px;
+    background:
+        radial-gradient(circle at 85% 20%, #d8d2ff 0, transparent 27%),
+        radial-gradient(circle at 5% 90%, #c8f5ed 0, transparent 30%),
+        #f5f4ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border: 35px solid rgba(119,98,237,.07);
+    border-radius: 50%;
+    top: -100px;
+    left: 40%;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: white;
+    padding: 10px 17px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--purple);
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(30,30,70,.06);
+    margin-bottom: 25px;
+}
+
+.eyebrow i {
+    width: 8px;
+    height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+}
+
+.hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.13;
+    letter-spacing: -3px;
+    font-weight: 800;
+    max-width: 650px;
+}
+
+.hero h1 span {
+    color: var(--purple);
+    position: relative;
+}
+
+.hero-description {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 490px;
+    margin: 23px 0 30px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    flex-wrap: wrap;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    padding: 16px 25px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: 0 10px 25px rgba(119,98,237,.25);
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    background: var(--purple-dark);
+    transform: translateY(-4px);
+}
+
+.secondary-btn {
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.hero-visual {
+    min-height: 390px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-circle {
+    width: 320px;
+    height: 320px;
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%;
+    background: linear-gradient(145deg, #8474f6, #5445c8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(91,74,202,.22);
+    animation: float 5s ease-in-out infinite;
+}
+
+.hero-shield {
+    width: 185px;
+    height: 205px;
+    background: white;
+    clip-path: polygon(50% 0, 92% 15%, 88% 65%, 50% 100%, 12% 65%, 8% 15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 85px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,.1));
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    padding: 15px 19px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(35,35,80,.12);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.floating-card.one {
+    top: 55px;
+    right: -10px;
+    transform: rotate(5deg);
+}
+
+.floating-card.two {
+    bottom: 55px;
+    left: -5px;
+    transform: rotate(-5deg);
+}
+
+.floating-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.floating-card.one strong {
+    color: var(--teal);
+}
+
+.floating-card.two strong {
+    color: var(--purple);
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* HIGHLIGHTS */
+.highlights {
+    padding: 30px 8%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+    background: white;
+}
+
+.highlight {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.highlight-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    flex-shrink: 0;
+}
+
+.highlight:nth-child(1) .highlight-icon {
+    background: #e5e1ff;
+}
+
+.highlight:nth-child(2) .highlight-icon {
+    background: #d9f8f1;
+}
+
+.highlight:nth-child(3) .highlight-icon {
+    background: #fff0d1;
+}
+
+.highlight h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.highlight p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* SECTION */
+section {
+    padding: 95px 8%;
+}
+
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-heading.center {
+    text-align: center;
+}
+
+.section-tag {
+    color: var(--purple);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(28px,4vw,40px);
+    letter-spacing: -1.5px;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* ABOUT */
+.about {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    align-items: center;
+    gap: 65px;
+}
+
+.about-art {
+    min-height: 350px;
+    border-radius: 35px;
+    background: linear-gradient(145deg, #d9d3ff, #bdf0e8);
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-art::before,
+.about-art::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.6);
+}
+
+.about-art::before {
+    width: 270px;
+    height: 270px;
+}
+
+.about-art::after {
+    width: 200px;
+    height: 200px;
+}
+
+.about-art span {
+    font-size: 105px;
+    z-index: 1;
+}
+
+.about-copy p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+.about-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.about-point {
+    background: white;
+    border: 1px solid #eeeef8;
+    padding: 14px;
+    border-radius: 13px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.about-point span {
+    color: var(--teal);
+    margin-right: 6px;
+}
+
+/* FEATURES */
+.features {
+    background: #efefff;
+    position: relative;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    border-radius: 25px;
+    padding: 30px;
+    min-height: 255px;
+    transition: .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-card:nth-child(1) {
+    background: #d9f7f0;
+}
+
+.feature-card:nth-child(2) {
+    background: #e2ddff;
+}
+
+.feature-card:nth-child(3) {
+    background: #ffe9dc;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 35px;
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.75);
+    display: grid;
+    place-items: center;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #65677f;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* STEPS */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.step {
+    padding: 25px;
+    border-left: 2px solid #dedbf9;
+    position: relative;
+}
+
+.step-number {
+    width: 47px;
+    height: 47px;
+    background: var(--purple);
+    color: white;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 23px;
+    box-shadow: 0 8px 20px rgba(119,98,237,.2);
+}
+
+.step h3 {
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* REPORT */
+.report-section {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+}
+
+.report-section::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(119,98,237,.15);
+    top: -200px;
+    right: -100px;
+}
+
+.report-section::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(57,201,181,.1);
+    bottom: -180px;
+    left: -80px;
+}
+
+.report-layout {
+    display: grid;
+    grid-template-columns: .75fr 1.25fr;
+    gap: 55px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+}
+
+.report-intro {
+    color: white;
+    padding-top: 20px;
+}
+
+.report-intro .section-tag {
+    color: var(--teal);
+}
+
+.report-intro h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 39px;
+    line-height: 1.2;
+    margin: 18px 0;
+    letter-spacing: -1.5px;
+}
+
+.report-intro p {
+    color: #bfc1d7;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.report-note {
+    margin-top: 35px;
+    padding: 20px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 17px;
+    font-size: 13px;
+    color: #e5e4f4;
+    line-height: 1.8;
+}
+
+.form-card {
+    background: white;
+    padding: 35px;
+    border-radius: 27px;
+    box-shadow: 0 25px 60px rgba(0,0,0,.2);
+}
+
+.form-title {
+    margin-bottom: 25px;
+}
+
+.form-title h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 23px;
+    margin-bottom: 7px;
+}
+
+.form-title p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #e7e7f0;
+    background: #fafaff;
+    padding: 14px 15px;
+    border-radius: 12px;
+    font-size: 13px;
+    outline: none;
+    color: var(--ink);
+    transition: .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(119,98,237,.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.anonymous {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px;
+    background: #f1efff;
+    border-radius: 13px;
+    margin-bottom: 20px;
+}
+
+.anonymous input {
+    accent-color: var(--purple);
+    margin-top: 4px;
+}
+
+.anonymous label {
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.anonymous small {
+    display: block;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 13px;
+    background: var(--purple);
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit-btn:hover {
+    background: var(--purple-dark);
+    transform: translateY(-3px);
+}
+
+.form-footnote {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* BOTTOM BANNER */
+.closing {
+    margin: 75px 8%;
+    padding: 55px 30px;
+    border-radius: 30px;
+    background: linear-gradient(110deg, #d8f7f0, #e6e1ff, #fff0d6);
+    text-align: center;
+}
+
+.closing h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(25px,4vw,36px);
+    margin-bottom: 12px;
+}
+
+.closing p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+footer {
+    background: #12142d;
+    color: white;
+    padding: 55px 8% 22px;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.footer-brand img {
+    width: 53px;
+    height: 53px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.footer-brand h3 {
+    font-size: 21px;
+    color: #a99cff;
+}
+
+.footer-brand p,
+.footer-info p {
+    color: #a9abc2;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.footer-info {
+    max-width: 330px;
+}
+
+.footer-info h4 {
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #343650;
+    margin-top: 40px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    color: #a9abc2;
+    font-size: 12px;
+}
+
+.group-name {
+    color: var(--yellow);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .navbar {
+        padding: 17px 5%;
+    }
+
+    .nav-menu {
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .hero-visual {
+        transform: scale(.85);
+    }
+
+    .report-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about {
+        gap: 30px;
+    }
+}
+
+@media(max-width: 650px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu {
+        gap: 13px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-menu a {
+        font-size: 11px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 65px 6% 30px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 300px;
+        transform: scale(.8);
+        margin-top: -20px;
+    }
+
+    .highlights {
+        grid-template-columns: 1fr;
+        padding: 20px 6%;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .about-art {
+        min-height: 260px;
+    }
+
+    .feature-grid,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .step {
+        border-left: 2px solid #dedbf9;
+    }
+
+    .form-card {
+        padding: 23px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .report-intro h2 {
+        font-size: 32px;
+    }
+
+    .closing {
+        margin: 50px 6%;
+        padding: 40px 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="#beranda" class="brand">
+        <img src="logo-smk.jpg" alt="Logo SMK Negeri 2 Semarang">
+        <div class="brand-name">Safe<span>Space.</span></div>
+    </a>
+
+    <div class="nav-menu">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#langkah">Cara Lapor</a>
+        <a href="#laporan" class="nav-button">Buat Laporan ↗</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="beranda">
+    <div class="hero-text">
+        <div class="eyebrow">
+            <i></i>
+            RUANG AMAN UNTUK SEMUA
+        </div>
+
+        <h1>
+            Berani Bicara.<br>
+            Bersama <span>Hentikan Perundungan.</span>
+        </h1>
+
+        <p class="hero-description">
+            Tidak ada yang pantas merasa takut di sekolah.
+            SafeSpace hadir untuk membantu siswa menyampaikan
+            laporan perundungan dengan lebih mudah dan nyaman.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#laporan" class="primary-btn">
+                Laporkan Sekarang ↗
+            </a>
+            <a href="#tentang" class="secondary-btn">
+                Kenali SafeSpace →
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="hero-circle">
+            <div class="hero-shield">🛡️</div>
+        </div>
+
+        <div class="floating-card one">
+            <strong>✓ Saling Peduli</strong>
+            <span>Mulai dari hal sederhana</span>
+        </div>
+
+        <div class="floating-card two">
+            <strong>💜 Kamu Didengar</strong>
+            <span>Setiap cerita berarti</span>
+        </div>
+    </div>
+</header>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+    <div class="highlight">
+        <div class="highlight-icon">🔒</div>
+        <div>
+            <h3>Privasi Diperhatikan</h3>
+            <p>Identitas dapat dirahasiakan dalam konsep pelaporan.</p>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <div class="highlight-icon">🤝</div>
+        <div>
+            <h3>Saling Menghargai</h3>
+            <p>Mendorong lingkungan sekolah yang lebih positif.</p>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <div class="highlight-icon">💬</div>
+        <div>
+            <h3>Berani Bersuara</h3>
+            <p>Memberikan ruang untuk menyampaikan kejadian.</p>
+        </div>
+    </div>
+</div>
+
+<!-- TENTANG -->
+<section class="about" id="tentang">
+    <div class="about-art">
+        <span>🫶</span>
+    </div>
+
+    <div class="about-copy">
+        <div class="section-tag">TENTANG KAMI</div>
+
+        <div class="section-heading">
+            <h2>Sekolah Seharusnya Jadi Tempat yang Aman.</h2>
+        </div>
+
+        <p>
+            SafeSpace adalah konsep aplikasi pelaporan perundungan
+            yang dirancang untuk siswa SMK Negeri 2 Semarang.
+        </p>
+
+        <p>
+            Melalui SafeSpace, siswa dapat menyampaikan informasi
+            mengenai kejadian perundungan sebagai langkah awal
+            untuk mendapatkan perhatian dan bantuan.
+        </p>
+
+        <p>
+            Kami ingin membangun kesadaran bahwa setiap siswa
+            berhak mendapatkan lingkungan belajar yang aman,
+            nyaman, dan saling menghargai.
+        </p>
+
+        <div class="about-points">
+            <div class="about-point"><span>✓</span> Peduli sesama</div>
+            <div class="about-point"><span>✓</span> Saling menghargai</div>
+            <div class="about-point"><span>✓</span> Berani melapor</div>
+            <div class="about-point"><span>✓</span> Cegah perundungan</div>
+        </div>
+    </div>
+</section>
+
+<!-- FITUR -->
+<section class="features" id="fitur">
+    <div class="section-heading center">
+        <div class="section-tag">FITUR UTAMA</div>
+        <h2>Ruang untuk Didengar.</h2>
+        <p>Fitur yang dirancang untuk mendukung keberanian siswa.</p>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Formulir Pelaporan</h3>
+            <p>
+                Sampaikan informasi kejadian perundungan
+                melalui formulir yang mudah dipahami.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Pelaporan Anonim</h3>
+            <p>
+                Tersedia pilihan untuk tidak mencantumkan
+                nama pada formulir laporan.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>Informasi Bantuan</h3>
+            <p>
+                Mengenal jenis perundungan dan pentingnya
+                mencari bantuan dari pihak tepercaya.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CARA LAPOR -->
+<section id="langkah">
+    <div class="section-heading center">
+        <div class="section-tag">LANGKAH MUDAH</div>
+        <h2>Bagaimana Cara Melapor?</h2>
+        <p>Ikuti tiga langkah sederhana berikut.</p>
+    </div>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">01</div>
+            <h3>Isi Formulir</h3>
+            <p>
+                Lengkapi informasi mengenai kejadian,
+                jenis perundungan, tanggal, dan lokasi.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">02</div>
+            <h3>Periksa Informasi</h3>
+            <p>
+                Pastikan informasi yang disampaikan
+                sesuai dengan kejadian yang dialami.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">03</div>
+            <h3>Hubungi Pihak Sekolah</h3>
+            <p>
+                Sampaikan laporan kepada guru BK atau
+                pihak sekolah yang berwenang agar mendapat bantuan.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FORM LAPORAN -->
+<section class="report-section" id="laporan">
+    <div class="report-layout">
+
+        <div class="report-intro">
+            <div class="section-tag">SUARAMU BERARTI</div>
+
+            <h2>Jangan Diam Ketika Perundungan Terjadi.</h2>
+
+            <p>
+                Setiap siswa berhak merasa aman.
+                Sampaikan kejadian yang kamu alami atau ketahui.
+                Keberanian untuk peduli bisa menjadi langkah awal perubahan.
+            </p>
+
+            <div class="report-note">
+                💜 <strong>Ingat!</strong><br>
+                Jika kamu sedang merasa tidak aman, segera cari
+                bantuan guru BK, wali kelas, atau orang dewasa
+                yang kamu percaya.
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div class="form-title">
+                <h3>Formulir Laporan</h3>
+                <p>Ceritakan kejadian dengan jelas dan jujur.</p>
+            </div>
+
+            <form id="formLaporan">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nama">Nama Pelapor</label>
+                        <input type="text" id="nama"
+                            placeholder="Nama kamu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kelas">Kelas</label>
+                        <input type="text" id="kelas"
+                            placeholder="Contoh: XII PPLG 1">
+                    </div>
+                </div>
+
+                <div class="anonymous">
+                    <input type="checkbox" id="anonim">
+
+                    <label for="anonim">
+                        Kirim sebagai anonim
+                        <small>
+                            Nama dan kelas tidak dicantumkan pada formulir.
+                        </small>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori">Jenis Perundungan</label>
+                    <select id="kategori" required>
+                        <option value="">Pilih jenis perundungan</option>
+                        <option value="Verbal">Perundungan Verbal</option>
+                        <option value="Fisik">Perundungan Fisik</option>
+                        <option value="Sosial">Perundungan Sosial</option>
+                        <option value="Siber">Perundungan Siber</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal Kejadian</label>
+                        <input type="date" id="tanggal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lokasi">Lokasi Kejadian</label>
+                        <input type="text" id="lokasi"
+                            placeholder="Lokasi kejadian" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="deskripsi">Kronologi Kejadian</label>
+                    <textarea id="deskripsi"
+                        placeholder="Ceritakan kejadian secara singkat dan jelas..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Kirim Laporan →
+                </button>
+
+                <p class="form-footnote">
+                    Prototype demonstrasi. Formulir ini belum
+                    menyimpan atau mengirim data ke pihak sekolah.
+                </p>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- PENUTUP -->
+<div class="closing">
+    <div class="section-tag">BERSAMA KITA BISA</div>
+    <h2>Lingkungan Aman Dimulai dari Kita. 💜</h2>
+    <p>
+        Berani peduli, saling menghargai, dan hentikan perundungan.
+    </p>
+    <a href="#laporan" class="primary-btn">
+        Buat Laporan Sekarang ↗
+    </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-main">
+        <div class="footer-brand">
+            <img src="logo-smk.jpg" alt="Logo SMK Negeri 2 Semarang">
+            <div>
+                <h3>SafeSpace.</h3>
+                <p>SMK Negeri 2 Semarang</p>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <h4>Tentang SafeSpace</h4>
+            <p>
+                Konsep aplikasi pelaporan perundungan
+                untuk mendukung lingkungan sekolah yang
+                aman, nyaman, dan saling menghargai.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 SafeSpace. Hak cipta dilindungi.</p>
+        <p class="group-name">DESIGNED BY KELOMPOK 6</p>
+    </div>
+</footer>
+
+<script>
+const form = document.getElementById("formLaporan");
+const anonim = document.getElementById("anonim");
+const nama = document.getElementById("nama");
+const kelas = document.getElementById("kelas");
+
+anonim.addEventListener("change", function() {
+    nama.disabled = anonim.checked;
+    kelas.disabled = anonim.checked;
+
+    nama.required = !anonim.checked;
+
+    if (anonim.checked) {
+        nama.value = "";
+        kelas.value = "";
+    }
+});
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    if (!anonim.checked && !nama.value.trim()) {
+        alert("Silakan isi nama atau pilih laporan anonim.");
+        nama.focus();
+        return;
+    }
+
+    const kategori = document.getElementById("kategori").value;
+    const tanggal = document.getElementById("tanggal").value;
+    const lokasi = document.getElementById("lokasi").value;
+    const deskripsi = document.getElementById("deskripsi").value;
+
+    if (!kategori || !tanggal || !lokasi.trim() || !deskripsi.trim()) {
+        alert("Mohon lengkapi semua informasi laporan.");
+        return;
+    }
+
+    alert(
+        "Terima kasih telah mengisi formulir SafeSpace! 💜\n\n" +
+        "Ini merupakan prototype demonstrasi. " +
+        "Laporan belum tersimpan atau terkirim ke pihak sekolah.\n\n" +
+        "Untuk mendapatkan bantuan nyata, hubungi guru BK " +
+        "atau pihak sekolah yang berwenang."
+    );
+
+    form.reset();
+    nama.disabled = false;
+    kelas.disabled = false;
+    nama.required = false;
+});
+</script>
+
+</body>
+</html>
