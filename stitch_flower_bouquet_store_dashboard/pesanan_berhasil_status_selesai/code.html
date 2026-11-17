@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-fixed-variant": "#3c4b3a",
+          "surface-container-low": "#f6f3ed",
+          "tertiary-fixed-dim": "#ffb59f",
+          "surface-container-lowest": "#ffffff",
+          "primary-fixed-dim": "#abcfb8",
+          "primary": "#032517",
+          "surface-variant": "#e5e2dc",
+          "on-surface": "#1c1c18",
+          "on-tertiary": "#ffffff",
+          "primary-fixed": "#c7ebd4",
+          "on-surface-variant": "#424843",
+          "on-error-container": "#93000a",
+          "on-secondary": "#ffffff",
+          "on-tertiary-fixed": "#3a0a00",
+          "secondary-fixed-dim": "#bbcbb6",
+          "on-primary-container": "#83a590",
+          "surface": "#fcf9f3",
+          "on-tertiary-container": "#e1866a",
+          "tertiary-container": "#5f210d",
+          "on-secondary-fixed": "#111f11",
+          "surface-container": "#f0eee8",
+          "on-primary-fixed-variant": "#2d4d3c",
+          "inverse-surface": "#31312d",
+          "surface-bright": "#fcf9f3",
+          "inverse-primary": "#abcfb8",
+          "on-primary": "#ffffff",
+          "tertiary-fixed": "#ffdbd0",
+          "background": "#fcf9f3",
+          "secondary-fixed": "#d7e7d1",
+          "surface-tint": "#456553",
+          "on-background": "#1c1c18",
+          "outline-variant": "#c1c8c2",
+          "tertiary": "#420d00",
+          "secondary": "#536251",
+          "secondary-container": "#d4e4ce",
+          "error-container": "#ffdad6",
+          "on-primary-fixed": "#002113",
+          "inverse-on-surface": "#f3f0ea",
+          "surface-dim": "#dcdad4",
+          "on-error": "#ffffff",
+          "on-tertiary-fixed-variant": "#76321d",
+          "primary-container": "#1b3b2b",
+          "surface-container-highest": "#e5e2dc",
+          "on-secondary-container": "#586755",
+          "error": "#ba1a1a",
+          "outline": "#727973",
+          "surface-container-high": "#ebe8e2"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin": "2.5rem",
+          "margin-mobile": "1rem",
+          "gutter": "1.5rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter-mobile": "1rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "display-lg": [
+            "Playfair Display"
+          ],
+          "headline-lg": [
+            "Playfair Display"
+          ],
+          "headline-md": [
+            "Playfair Display"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "label-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg-mobile": [
+            "Playfair Display"
+          ],
+          "headline-sm": [
+            "Playfair Display"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg-mobile": [
+            "Playfair Display"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "display-lg": [
+            "3rem",
+            {
+              "lineHeight": "3.5rem",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "2.25rem",
+            {
+              "lineHeight": "2.75rem",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "1.75rem",
+            {
+              "lineHeight": "2.25rem",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "0.8125rem",
+            {
+              "lineHeight": "1.25rem",
+              "fontWeight": "400"
+            }
+          ],
+          "body-md": [
+            "0.9375rem",
+            {
+              "lineHeight": "1.5rem",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "0.6875rem",
+            {
+              "lineHeight": "0.875rem",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ],
+          "label-lg": [
+            "0.875rem",
+            {
+              "lineHeight": "1.25rem",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "2.75rem",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.75rem",
+              "fontWeight": "500"
+            }
+          ],
+          "label-md": [
+            "0.75rem",
+            {
+              "lineHeight": "1rem",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "2.25rem",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "1.125rem",
+            {
+              "lineHeight": "1.75rem",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between py-6 shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="flex flex-col gap-6"><div class="px-6 flex items-center gap-3"><img alt="Petal &amp; Stem Florist Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBF6ry6jTpUNcMJo0ly12sF7H1AisoO3GPfAkuX8u-Qs_ZPK0_7ORbOFJU-9eFJx7HR5kDn4S-2uA9TrTS--q2iryBw9KkFEHb9Ip3tQYa5fWhLu10706yfvGG6l4L2tSLEoQaeak86BtNWl0_WjTKEqNUWckOpthm1yw-GKfy3wWzxHqhZquFpftJd74rOBiWiuHtIQOLapKK6Cc0JXbFPte-yCG_SYXYPUrdXdcIG"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight">Petal &amp; Stem</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Atelier Florist</span></div></div><div class="px-6"><div class="p-3 bg-surface rounded-xl flex items-center justify-between shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg">storefront</span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-semibold">Studio Utama</span><span class="font-label-sm text-label-sm text-on-surface-variant">Menteng, Jakarta</span></div></div><button class="text-on-surface-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-base">unfold_more</span></button></div></div><nav class="flex flex-col gap-1 px-4" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="ringkasan" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span>Ringkasan</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="pesanan-buket" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-xl">shopping_bag</span><span>Pesanan Buket</span></div><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">12</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="katalog-bunga-dan-rangkaian" href="#"><span class="material-symbols-outlined text-xl">yard</span><span>Katalog &amp; Rangkaian</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="stok-bunga-segar" href="#"><span class="material-symbols-outlined text-xl">local_florist</span><span>Stok Bunga Segar</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="pengiriman-kurir" href="#"><span class="material-symbols-outlined text-xl">local_shipping</span><span>Pengiriman Kurir</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="analitik-penjualan" href="#"><span class="material-symbols-outlined text-xl">query_stats</span><span>Analitik Penjualan</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="pengaturan-toko" href="#"><span class="material-symbols-outlined text-xl">tune</span><span>Pengaturan Toko</span></a></nav></div><div class="px-6"><div class="p-4 rounded-xl bg-surface flex flex-col gap-2 shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Suhu Pendingin</span><span class="font-label-sm text-label-sm font-semibold text-primary">4.2°C</span></div><div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden"><div class="bg-secondary h-full rounded-full" style="width: 78%"></div></div><span class="font-label-sm text-label-sm text-secondary-fixed-dim text-on-surface-variant">Kelembaban Ruang 82% • Optimal</span></div></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/85 backdrop-blur-xl z-40 px-8 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-6"><div class="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-md text-label-md font-medium">Toko Buka • Siap Antar Hari Ini</span></div><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none">search</span><input class="w-80 pl-9 pr-4 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1.5 focus:ring-primary transition-all" placeholder="Cari pesanan, bunga, atau pelanggan..." type="text"/></div></div><div class="flex items-center gap-4"><button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-lg">add</span><span>+ Pesanan Baru</span></button><div class="h-6 w-px bg-surface-variant"></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-2xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-container ring-2 ring-surface"></span></button><div class="flex items-center gap-3 pl-2"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmBLoXwayJxvSpISS6ALLozigfN7EjTmfpknWQRxcl6iw5m5DK3ugpFmFmWluhwSJmyD8BtJm5tXAcQNyaEGh3B0UNVzzFb8gPuRnJBVof2ftf5Vc8R_HRUdjoD0GJ_dPS4jdevkghCno3qZkI0pvL6fIw4jUqbbaO0TJJ6Av_oGAgt4u9V6t171zTLFO6qCYQhImTeSWoDyeZ5m7AXU0zs0zgNoSBkFvbvF4pqZY"/><div class="flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface">Eleanor Vance</span><span class="font-label-sm text-label-sm text-on-surface-variant">Head Florist</span></div></div></div></header><main class="w-full pt-20 px-8 pb-12 bg-surface flex-1"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-8 pb-16">
+<!-- Top Breadcrumb & Status Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Pesanan Buket</a>
+<span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+<span class="text-on-surface">#ORD-8821</span>
+<span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold text-label-sm">Selesai &amp; Terkirim</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">print</span>
+<span>Cetak Bukti Transaksi</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+<span>Kembali ke Pesanan</span>
+</button>
+</div>
+</div>
+<!-- Hero Completion Milestone Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-md p-8 md:p-10">
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-secondary-container/40 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-64 h-64 rounded-full bg-tertiary-fixed/30 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+<div class="flex items-start md:items-center gap-5">
+<div class="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-lg relative">
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary-fixed" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div class="absolute -inset-1 rounded-full border border-dashed border-primary-fixed-dim/50 animate-spin" style="animation-duration: 25s;"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Berhasil Diserahterimakan</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Wisuda Universitas Indonesia</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Pesanan Berhasil Diselesaikan &amp; Dikirim</h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-secondary">schedule</span>
+              Diserahkan pada <span class="font-semibold text-on-surface">24 Oktober 2024, 11:15 WIB</span>
+<span class="text-secondary font-medium bg-secondary-container/70 px-2 py-0.5 rounded text-label-sm ml-1">15 menit lebih awal</span>
+</p>
+</div>
+</div>
+<div class="flex flex-wrap lg:flex-nowrap items-center gap-3">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-all" type="button">
+<span class="material-symbols-outlined text-lg text-secondary">download</span>
+<span>Unduh Berkas e-Invoice</span>
+</button>
+<a class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-sm" href="https://wa.me/?text=Halo%20Sarah,%20buket%20wisuda%20telah%20selesai%20diserahkan%20di%20Balairung%20UI." target="_blank">
+<span class="material-symbols-outlined text-lg text-primary-fixed">chat</span>
+<span>Kirim Update WhatsApp</span>
+</a>
+</div>
+</div>
+<!-- Quick Delivery & Logistics Strip -->
+<div class="mt-8 pt-6 border-t border-surface-variant/40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex items-center gap-3 bg-surface-container-low p-3.5 rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">qr_code_2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nomor Pesanan</span>
+<span class="font-label-lg text-label-lg text-primary font-bold">#ORD-8821</span>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-3.5 rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Resi Van Dingin</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">#DEL-8821-EXP</span>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-3.5 rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">person_pin</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kurir Atelier</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Pak Budi Santoso</span>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-3.5 rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined">ac_unit</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rantai Dingin Van</span>
+<span class="font-label-lg text-label-lg text-secondary font-semibold">+14.2°C Stabil</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Workspace Split: 8 Col & 4 Col Bento -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column (8 Col): Visual Proofs & Timeline -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Photographic Documentation & QC Section -->
+<div class="bg-surface-container-lowest rounded-xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Verifikasi Kualitas Atelier</span>
+<h2 class="font-headline-md text-headline-md text-primary">Dokumentasi Hasil Rangkaian &amp; Serah Terima</h2>
+</div>
+<div class="flex items-center gap-2 bg-secondary-container px-3 py-1.5 rounded-full text-on-secondary-container">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="font-label-sm text-label-sm font-semibold">QC Lolos 100%</span>
+</div>
+</div>
+<!-- Photo Verification Mosaic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Photo 1: Final Bouquet Arrangement -->
+<div class="group relative rounded-xl overflow-hidden bg-surface-container aspect-[4/3] shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Editorial close-up of The Luminary Pastel Bouquet featuring 24 premium Ecuadorian blush roses, ivory Casablanca lilies, hydrangeas and fresh eucalyptus stems, wrapped in peach terracotta textured paper with an artisan dusty rose silk chiffon ribbon and engraved gold wax seal, natural daylight botanical atelier setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv6WXu-1QxlFlkBJnMwW2te5HTb1rvPUpPNswAWFbWTEE2ppogHBW0bRuAA8QDp-YG5oIi_D77Dbw4AH8rbMHPrDKvzxOub6_51Kf8HYfs6SnA864jHb0LFmcS5OtGgdvmHoaxAG0gT4Yg1FFuiLljNHeMi7DdhbEur2HSzoaOog1QdzeOgytvAX-qKFIaL4FbuSXE51UFccRKh8GmqAV0bgAN31845C5JrKPFGDg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-md text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-sm text-secondary">palette</span>
+<span>Final Arrangement Photo</span>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold">The Luminary Pastel (24 Tangkai)</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">Inspeksi Atelier Menteng • 10:40 WIB</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/20 hover:bg-surface-container-lowest/40 backdrop-blur-sm flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Photo 2: Proof of Handover at UI -->
+<div class="group relative rounded-xl overflow-hidden bg-surface-container aspect-[4/3] shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Authentic delivery handover snapshot in front of Universitas Indonesia Balairung building, courier in dark green atelier uniform holding the pastel flower bouquet to a delighted student wearing graduation regalia, soft morning outdoor light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZwQnIB5WmFnJlAAKJO6raUkdg0jlWLDm5xvesqLiEy8zDOB-zI_Pa8V5vBGPjCOnRhrBY0ajZKhIK4gqo76FiuK2o9L6SpCR_DAaeb_K8smbUKxFf-b_IaUCK_ybZ2j6aYXeV0NiX06IGmdwFXP7OYq5NIBO7-ppFqSWMYkwQIyr7H08v-CYnIVoII8EwEuS06eGxDL_3YVZGG1Cnfe8C9TC3wABxeQ6YG-6QW-o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent"></div>
+<!-- Digital Stamped Badge -->
+<div class="absolute top-3 right-3 bg-tertiary-container/90 backdrop-blur-md px-3 py-1.5 rounded text-tertiary-fixed font-label-sm text-label-sm font-semibold uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span>Tervalidasi di Lokasi</span>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex flex-col gap-1 text-on-primary">
+<span class="font-label-md text-label-md font-semibold">Diterima oleh Sarah Kinanti (Penerima Langsung)</span>
+<div class="flex items-center gap-2 text-primary-fixed-dim font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">pin_drop</span>
+<span>Balairung UI Depok • GPS Verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- QC Indicators Ticker -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-primary">Hydration &amp; Nutrition Seal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Floral sponge saturated with Chrysal flower food</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-primary">Suhu Transportasi Terkontrol</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rentang 12°C - 15°C terpelihara tanpa henti</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-primary">Wax Seal &amp; Ribbon Grade</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pita silk chiffon utuh tanpa kerutan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Journey Timeline -->
+<div class="bg-surface-container-lowest rounded-xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Audit Trail Pelaksanaan</span>
+<h2 class="font-headline-md text-headline-md text-primary">Kronologi Proses Pesanan</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container font-semibold">Total Durasi: 2 Jam 45 Menit</span>
+</div>
+<div class="relative pl-6 flex flex-col gap-8">
+<!-- Timeline vertical connector line -->
+<div class="absolute left-2.5 top-3 bottom-3 w-0.5 bg-secondary-container"></div>
+<!-- Event 1: Delivered -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-primary">11:15 WIB</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Diserahkan &amp; Diterima</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Paket diterima langsung oleh Sarah Kinanti di lobi Balairung Universitas Indonesia. Tanda tangan digital terekam.</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kurir: Budi Santoso (Van Logistik Petal &amp; Stem #03)</span>
+</div>
+</div>
+<!-- Event 2: QC & Packed -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">10:45 WIB</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pemberangkatan &amp; Cold Storage Van</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Lolos uji kesegaran QC Atelier. Buket dimuat ke kompartemen pendingin (+14°C) dengan penahan getaran vertikal.</p>
+</div>
+</div>
+<!-- Event 3: Arranging -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">10:00 WIB</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Proses Rangkaian &amp; Wax Seal</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Rangkaian spiral disusun oleh Senior Florist Maya Daniswara. Kartu ucapan kaligrafi emboss selesai dipasang.</p>
+</div>
+</div>
+<!-- Event 4: Flower Selection -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">09:15 WIB</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kondisioning &amp; Pemilihan Tangkai</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Pemotongan tangkai 45 derajat dan hidrasi 45 menit pada air bernutrisi seimbang dari cold-room 4.2°C.</p>
+</div>
+</div>
+<!-- Event 5: Payment Received -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">08:30 WIB</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pesanan Diterima &amp; Pembayaran Terkonfirmasi</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Pembayaran lunas via QRIS Mandiri sebesar Rp 1.450.000 atas nama Sarah Kinanti.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (4 Col): Order Spec, Customer Review & Actions -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Order Specification Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between pb-4 border-b border-surface-variant/40">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Rincian Paket</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Buket &amp; Material</h3>
+</div>
+<span class="material-symbols-outlined text-secondary">local_florist</span>
+</div>
+<div class="flex flex-col gap-4">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Koleksi Buket</span>
+<p class="font-headline-sm text-headline-sm text-primary">The Luminary Pastel</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">24 Tangkai Pilihan Grade A+</p>
+</div>
+<!-- Floral Ingredients Tags -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">Mawar Ekuador Pastel</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">Lily Casablanka</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">Hydrangea Soft Cream</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">Baby's Breath</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">Eucalyptus Silver Dollar</span>
+</div>
+<div class="p-3.5 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<span class="font-label-sm text-label-sm font-semibold text-primary">Packaging Atelier</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Kertas Terracotta Peach &amp; Gauze Cream, Pita Silk Chiffon Dusty Rose dengan Cap Segel Lilin (Wax Seal) Logo Petal &amp; Stem.
+              </p>
+</div>
+<!-- Card Message Box -->
+<div class="p-3.5 rounded-lg bg-surface-container-high/60 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-secondary uppercase tracking-wider">Pesan Kartu Ucapan</span>
+<p class="font-headline-sm text-headline-sm italic text-primary leading-relaxed">
+                "Selamat atas kelulusan wisudamu, Sarah tercinta! Kiranya masa depanmu mekar seharum mawar-mawar ini. Love, Mama &amp; Papa."
+              </p>
+</div>
+<!-- Payment Summary -->
+<div class="pt-4 border-t border-surface-variant/40 flex flex-col gap-2">
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Metode Pembayaran</span>
+<span class="font-semibold text-on-surface">QRIS Mandiri</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Status Pelunasan</span>
+<span class="text-secondary font-semibold">LUNAS</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Total Transaksi</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Rp 1.450.000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Customer Feedback Highlight Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-secondary-container/30 blur-xl"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Kepuasan Pelanggan</span>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic">
+            "Bunganya sangat segar dan harum semerbak, kemasan wax sealnya sangat mewah dan memukau saat difoto di Balairung! Terima kasih Petal &amp; Stem Atelier!"
+          </p>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-label-md text-label-md text-on-secondary-container font-semibold">
+              SK
+            </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">Sarah Kinanti</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Verified Recipient • Wisudawati UI</span>
+</div>
+</div>
+</div>
+<!-- Post-Completion Operations -->
+<div class="p-6 rounded-xl bg-primary-container text-on-primary flex flex-col gap-4 shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed text-2xl">spa</span>
+<h4 class="font-headline-sm text-headline-sm text-on-primary">Care Card Digital</h4>
+</div>
+<p class="font-body-sm text-body-sm text-primary-fixed-dim leading-relaxed">
+            Panduan perawatan 5 hari untuk lily &amp; mawar segar telah dikirim secara otomatis ke nomor penerima melalui SMS &amp; WhatsApp.
+          </p>
+<div class="flex flex-col gap-2.5 pt-2">
+<button class="w-full py-2.5 px-4 rounded-lg bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">repeat</span>
+<span>Buat Pesanan Serupa (Repeat Order)</span>
+</button>
+<button class="w-full py-2 px-4 rounded-lg bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-on-primary font-label-md text-label-md transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">forward_to_inbox</span>
+<span>Kirim Surat Terima Kasih Atelier</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
