@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-fixed-variant": "#3c4b3a",
+          "surface-container-low": "#f6f3ed",
+          "tertiary-fixed-dim": "#ffb59f",
+          "surface-container-lowest": "#ffffff",
+          "primary-fixed-dim": "#abcfb8",
+          "primary": "#032517",
+          "surface-variant": "#e5e2dc",
+          "on-surface": "#1c1c18",
+          "on-tertiary": "#ffffff",
+          "primary-fixed": "#c7ebd4",
+          "on-surface-variant": "#424843",
+          "on-error-container": "#93000a",
+          "on-secondary": "#ffffff",
+          "on-tertiary-fixed": "#3a0a00",
+          "secondary-fixed-dim": "#bbcbb6",
+          "on-primary-container": "#83a590",
+          "surface": "#fcf9f3",
+          "on-tertiary-container": "#e1866a",
+          "tertiary-container": "#5f210d",
+          "on-secondary-fixed": "#111f11",
+          "surface-container": "#f0eee8",
+          "on-primary-fixed-variant": "#2d4d3c",
+          "inverse-surface": "#31312d",
+          "surface-bright": "#fcf9f3",
+          "inverse-primary": "#abcfb8",
+          "on-primary": "#ffffff",
+          "tertiary-fixed": "#ffdbd0",
+          "background": "#fcf9f3",
+          "secondary-fixed": "#d7e7d1",
+          "surface-tint": "#456553",
+          "on-background": "#1c1c18",
+          "outline-variant": "#c1c8c2",
+          "tertiary": "#420d00",
+          "secondary": "#536251",
+          "secondary-container": "#d4e4ce",
+          "error-container": "#ffdad6",
+          "on-primary-fixed": "#002113",
+          "inverse-on-surface": "#f3f0ea",
+          "surface-dim": "#dcdad4",
+          "on-error": "#ffffff",
+          "on-tertiary-fixed-variant": "#76321d",
+          "primary-container": "#1b3b2b",
+          "surface-container-highest": "#e5e2dc",
+          "on-secondary-container": "#586755",
+          "error": "#ba1a1a",
+          "outline": "#727973",
+          "surface-container-high": "#ebe8e2"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin": "2.5rem",
+          "margin-mobile": "1rem",
+          "gutter": "1.5rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter-mobile": "1rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "display-lg": [
+            "Playfair Display"
+          ],
+          "headline-lg": [
+            "Playfair Display"
+          ],
+          "headline-md": [
+            "Playfair Display"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "label-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg-mobile": [
+            "Playfair Display"
+          ],
+          "headline-sm": [
+            "Playfair Display"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg-mobile": [
+            "Playfair Display"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "display-lg": [
+            "3rem",
+            {
+              "lineHeight": "3.5rem",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "2.25rem",
+            {
+              "lineHeight": "2.75rem",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "1.75rem",
+            {
+              "lineHeight": "2.25rem",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "0.8125rem",
+            {
+              "lineHeight": "1.25rem",
+              "fontWeight": "400"
+            }
+          ],
+          "body-md": [
+            "0.9375rem",
+            {
+              "lineHeight": "1.5rem",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "0.6875rem",
+            {
+              "lineHeight": "0.875rem",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ],
+          "label-lg": [
+            "0.875rem",
+            {
+              "lineHeight": "1.25rem",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "2.75rem",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.75rem",
+              "fontWeight": "500"
+            }
+          ],
+          "label-md": [
+            "0.75rem",
+            {
+              "lineHeight": "1rem",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "2.25rem",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "1.125rem",
+            {
+              "lineHeight": "1.75rem",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between py-6 shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="flex flex-col gap-6"><div class="px-6 flex items-center gap-3"><img alt="Petal &amp; Stem Florist Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBF6ry6jTpUNcMJo0ly12sF7H1AisoO3GPfAkuX8u-Qs_ZPK0_7ORbOFJU-9eFJx7HR5kDn4S-2uA9TrTS--q2iryBw9KkFEHb9Ip3tQYa5fWhLu10706yfvGG6l4L2tSLEoQaeak86BtNWl0_WjTKEqNUWckOpthm1yw-GKfy3wWzxHqhZquFpftJd74rOBiWiuHtIQOLapKK6Cc0JXbFPte-yCG_SYXYPUrdXdcIG"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight">Petal &amp; Stem</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Atelier Florist</span></div></div><div class="px-6"><div class="p-3 bg-surface rounded-xl flex items-center justify-between shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg">storefront</span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-semibold">Studio Utama</span><span class="font-label-sm text-label-sm text-on-surface-variant">Menteng, Jakarta</span></div></div><button class="text-on-surface-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-base">unfold_more</span></button></div></div><nav class="flex flex-col gap-1 px-4" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="ringkasan" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span>Ringkasan</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="pesanan-buket" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-xl">shopping_bag</span><span>Pesanan Buket</span></div><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">12</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="katalog-bunga-dan-rangkaian" href="#"><span class="material-symbols-outlined text-xl">yard</span><span>Katalog &amp; Rangkaian</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="stok-bunga-segar" href="#"><span class="material-symbols-outlined text-xl">local_florist</span><span>Stok Bunga Segar</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="pengiriman-kurir" href="#"><span class="material-symbols-outlined text-xl">local_shipping</span><span>Pengiriman Kurir</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="analitik-penjualan" href="#"><span class="material-symbols-outlined text-xl">query_stats</span><span>Analitik Penjualan</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="pengaturan-toko" href="#"><span class="material-symbols-outlined text-xl">tune</span><span>Pengaturan Toko</span></a></nav></div><div class="px-6"><div class="p-4 rounded-xl bg-surface flex flex-col gap-2 shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Suhu Pendingin</span><span class="font-label-sm text-label-sm font-semibold text-primary">4.2°C</span></div><div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden"><div class="bg-secondary h-full rounded-full" style="width: 78%"></div></div><span class="font-label-sm text-label-sm text-secondary-fixed-dim text-on-surface-variant">Kelembaban Ruang 82% • Optimal</span></div></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/85 backdrop-blur-xl z-40 px-8 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-6"><div class="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-md text-label-md font-medium">Toko Buka • Siap Antar Hari Ini</span></div><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none">search</span><input class="w-80 pl-9 pr-4 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1.5 focus:ring-primary transition-all" placeholder="Cari pesanan, bunga, atau pelanggan..." type="text"/></div></div><div class="flex items-center gap-4"><button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-lg">add</span><span>+ Pesanan Baru</span></button><div class="h-6 w-px bg-surface-variant"></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-2xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-container ring-2 ring-surface"></span></button><div class="flex items-center gap-3 pl-2"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmBLoXwayJxvSpISS6ALLozigfN7EjTmfpknWQRxcl6iw5m5DK3ugpFmFmWluhwSJmyD8BtJm5tXAcQNyaEGh3B0UNVzzFb8gPuRnJBVof2ftf5Vc8R_HRUdjoD0GJ_dPS4jdevkghCno3qZkI0pvL6fIw4jUqbbaO0TJJ6Av_oGAgt4u9V6t171zTLFO6qCYQhImTeSWoDyeZ5m7AXU0zs0zgNoSBkFvbvF4pqZY"/><div class="flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface">Eleanor Vance</span><span class="font-label-sm text-label-sm text-on-surface-variant">Head Florist</span></div></div></div></header><main class="w-full pt-20 px-8 pb-12 bg-surface flex-1"><div class="flex flex-col w-full gap-8">
+<script>
+    (function highlightNav() {
+      const activeItem = document.querySelector('aside nav a[data-path="stok-bunga-segar"]');
+      if (activeItem) {
+        document.querySelectorAll('aside nav a').forEach(a => {
+          a.classList.remove('bg-primary-container', 'text-on-primary', 'font-medium', 'shadow-sm');
+          a.classList.add('text-on-surface-variant');
+        });
+        activeItem.classList.add('bg-primary-container', 'text-on-primary', 'font-medium', 'shadow-sm');
+        activeItem.classList.remove('text-on-surface-variant');
+      }
+    })();
+  </script>
+<!-- Breadcrumb & Top Bar Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span>Toko Bunga Atelier</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Inventaris &amp; Bahan Baku</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-semibold">Stok Cold-Room &amp; Restock</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Katalog Stok Cold-Room &amp; Pengadaan Bunga Segar</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Pemantauan sensor iklim mikro cold-room botani, manajemen rotasi hidrasi tangkai, dan integrasi rantai pasok bunga segar harian.
+      </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-lg text-label-lg transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg text-secondary">file_download</span>
+<span>Ekspor Laporan Opname</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-lg text-label-lg transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">fact_check</span>
+<span>Catat Penerimaan Batch Baru</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-md active:scale-95" type="button">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>+ Buat Purchase Order (PO)</span>
+</button>
+</div>
+</div>
+<!-- Cold-Room Microclimate & Capacity Telemetry Banner -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+<!-- Stat 1: Suhu Cold-Room A -->
+<div class="relative overflow-hidden p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col justify-between gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Suhu Cold-Room A (Mawar &amp; Lily)</span>
+<span class="p-2 rounded-lg bg-secondary-container/60 text-secondary">
+<span class="material-symbols-outlined text-xl">thermostat</span>
+</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-primary tracking-tight font-headline-lg">3.8<span class="font-headline-sm text-headline-sm text-on-surface-variant font-normal">°C</span></span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Optimal (Target 3–5°C)
+        </span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>Fluktuasi 24 jam</span>
+<span class="font-medium text-on-surface">±0.3°C • Chiller Copeland Aktif</span>
+</div>
+</div>
+<!-- Stat 2: Kelembaban Relatif (RH) -->
+<div class="relative overflow-hidden p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col justify-between gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Kelembaban Relatif (RH)</span>
+<span class="p-2 rounded-lg bg-primary-fixed/40 text-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-xl">water_drop</span>
+</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-primary tracking-tight font-headline-lg">86<span class="font-headline-sm text-headline-sm text-on-surface-variant font-normal">%</span></span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+          Nutrisi Terjaga
+        </span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>Ultrasonic Fogger</span>
+<span class="font-medium text-on-surface">Otomatisasi 12 Menit/Jam</span>
+</div>
+</div>
+<!-- Stat 3: Kapasitas Chiller -->
+<div class="relative overflow-hidden p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Kapasitas Rak Chiller</span>
+<span class="p-2 rounded-lg bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+</span>
+</div>
+<div>
+<div class="flex items-baseline justify-between mb-1.5">
+<span class="font-display-lg text-display-lg text-primary tracking-tight font-headline-lg">78<span class="font-headline-sm text-headline-sm text-on-surface-variant font-normal">%</span></span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">480 / 600 Tangkai</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 78%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Sisa Ruang Kosong</span>
+<span class="font-medium text-on-surface">120 Slot Tangkai Siap Batch</span>
+</div>
+</div>
+<!-- Stat 4: Varian Kritis / Restock Alert -->
+<div class="relative overflow-hidden p-5 rounded-xl bg-tertiary-fixed/30 shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col justify-between gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-tertiary-fixed-variant font-bold">Varian Menipis &amp; Kritis</span>
+<span class="p-2 rounded-lg bg-tertiary-container text-on-tertiary">
+<span class="material-symbols-outlined text-xl">warning</span>
+</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-tertiary tracking-tight font-headline-lg">3</span>
+<span class="font-label-md text-label-md text-on-tertiary-fixed-variant font-semibold">
+          Varian Perlu Restock Segera
+        </span>
+</div>
+<div class="flex items-center justify-between text-on-tertiary-fixed-variant font-body-sm text-body-sm pt-1">
+<span>Defisit Kebutuhan Rangkaian</span>
+<span class="font-bold text-tertiary">18 Tangkai Besok Pagi</span>
+</div>
+</div>
+</div>
+<!-- Filter & Intelligent Botanical Search -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_1px_6px_rgba(0,0,0,0.02)] flex flex-col gap-5">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+<!-- Search Input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-xl pointer-events-none">search</span>
+<input class="w-full pl-11 pr-4 py-2.5 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-1.5 focus:ring-primary transition-all" placeholder="Cari nama bunga, varian warna, batch ID, atau supplier..." type="text"/>
+</div>
+<!-- Quick Dropdown Filters -->
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Status:</span>
+<select class="bg-transparent font-label-md text-label-md font-medium text-on-surface focus:outline-none cursor-pointer">
+<option>Semua Status</option>
+<option>Aman (Stok Cukup)</option>
+<option>Menipis (Hampir Habis)</option>
+<option>Kritis (Perlu Order Hari Ini)</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Supplier:</span>
+<select class="bg-transparent font-label-md text-label-md font-medium text-on-surface focus:outline-none cursor-pointer">
+<option>Semua Supplier Partner</option>
+<option>Kebun Lembang Highland</option>
+<option>Ekuador Direct Import</option>
+<option>Holland Flora Import</option>
+<option>Malang Rose Farm</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Category Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1">
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-sm transition-all" type="button">
+        Semua Bunga (480 tkg)
+      </button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        Focal Blooms / Bunga Utama (210 tkg)
+      </button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        Filler &amp; Foliage (185 tkg)
+      </button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        Tanaman Awetan/Preserved (85 tkg)
+      </button>
+</div>
+</div>
+<!-- Main Floral Stock Ledger / Catalog Cards Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Left Section: 8 Cols Flower Cards & Inventory Details -->
+<div class="xl:col-span-8 flex flex-col gap-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline-sm text-headline-sm text-primary">Katalog Varian Cold-Room Aktif</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Menampilkan 6 varian terpilih</span>
+</div>
+<!-- Flower Card 1: Mawar Ekuador Pastel Blush (Aman) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow flex flex-col md:flex-row gap-5 items-start">
+<div class="w-full md:w-36 h-36 rounded-lg overflow-hidden shrink-0 relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up photography of premium pastel blush Ecuadorian roses with long dewy green stems, fresh botanical petals with delicate water droplets inside a luxury florist cold room atelier, soft natural diffused light, rich soft textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqot7Hnc1hYpV66lpm0RZbwMs2jJSBjNceYNWAFlkeVjHG9AQHKBzkvf_4HY_HsXbhFXMk8yftRo9fwz74yO2fU6TkGb2cu2cq0gncvr6c5GkhojAiS0ajax_Q9OQ1vXGn2LZ6jVnbDIJrn3XYPpDgVVOnYnMoUTfzJzectxQfVTeKOT8OJmS09u9lvRFbOkAq-3UuFvm0U6bVIpu8h3Xo4LXurUVz3V6YxJmDRck"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-label-sm text-label-sm font-semibold">
+            Rak A-02
+          </span>
+</div>
+<div class="flex-1 flex flex-col justify-between h-full gap-3 w-full">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Mawar Ekuador Pastel Blush</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Grade A+ (60cm)</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Stok Aman
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Batch <span class="font-mono text-on-surface font-semibold">#BATCH-2410-A</span> • Masuk: 22 Okt • Expired Kesegaran: <span class="text-on-surface font-medium">30 Okt (8 hari tersisa)</span>
+</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-surface-container-low text-body-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Stok Siap</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">45 <span class="font-body-sm text-body-sm font-normal text-on-surface">Tangkai</span></span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Beli</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Rp 28.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Jual</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Rp 45.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Supplier</span>
+<span class="font-label-md text-label-md font-medium text-on-surface truncate block">Ekuador Direct</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" type="button">
+              Detail Tangkai
+            </button>
+<button class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors" type="button">
+              + Restock Batch
+            </button>
+</div>
+</div>
+</div>
+<!-- Flower Card 2: Hydrangea Soft Pink & Lavender (KRITIS ALERT) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow flex flex-col md:flex-row gap-5 items-start relative overflow-hidden">
+<div class="w-full md:w-36 h-36 rounded-lg overflow-hidden shrink-0 relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Lush soft pink and delicate lavender French hydrangea bloom with wide botanical petals and rich green foliage inside a misted glass florist refrigerated unit, elegant botanical still life aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS-eFc2as7O_yN697vjczA5KvqXI2tG82g451b4a5y_C7PXtK_ABVs6pG1bNwbXgBg2Km6IWCdS9nkMRkwMhEFingz2XUhEilrVlIhIN3rilDjpreWFVSGmgDV9GMiPeoQMRrU7E7eLjJrPGp-Ys0PZ2zOaCp1RTj5WVJOzA_IGxgYuLJuqo77K0_VrUBfM6dbEevkDR8MHJF1iTdVpWpXwExXoVrDME8ZJlzyHcc"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-tertiary-container/90 text-on-tertiary font-label-sm text-label-sm font-semibold">
+            Rak B-01
+          </span>
+</div>
+<div class="flex-1 flex flex-col justify-between h-full gap-3 w-full">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Hydrangea Soft Pink &amp; Lavender</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">Focal Head 18cm</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-sm">error</span>
+                KRITIS &lt; 10 Tangkai
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Batch <span class="font-mono text-on-surface font-semibold">#BATCH-2410-C</span> • Masuk: 21 Okt • Expired Kesegaran: <span class="text-tertiary font-medium">26 Okt (5 hari tersisa)</span>
+</p>
+</div>
+<!-- Alert Callout -->
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-tertiary shrink-0">notification_important</span>
+<span class="font-medium">Dibutuhkan <strong>18 tangkai</strong> untuk jadwal rangkaian buket wisuda besok pagi!</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-surface-container-low text-body-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Stok Saat Ini</span>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">6 <span class="font-body-sm text-body-sm font-normal text-on-surface">Tangkai</span></span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Beli</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Rp 35.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Jual</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Rp 65.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Supplier</span>
+<span class="font-label-md text-label-md font-medium text-on-surface truncate block">Kebun Lembang</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" type="button">
+              Detail Batch
+            </button>
+<button class="px-4 py-1.5 rounded-lg bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label-md text-label-md transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">flash_on</span>
+<span>Pesan Kilat Restock</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Flower Card 3: White Lily Casablanka (Cukup) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow flex flex-col md:flex-row gap-5 items-start">
+<div class="w-full md:w-36 h-36 rounded-lg overflow-hidden shrink-0 relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Exquisite pristine white Casablanca lilies with delicate yellow pollen stamens and tight unopened buds, arranged in clear glass vases in a dark green botanical conservatory background, high key serene floral photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOyLxOeOoMhNRlQw-X3oWMYf_jSwwgUiE4wftUIAe6AuUaTphDQvO7zieUEOBWzSAQrFOg2UsRGjrAW88eJ-uDB3GW496km71NJPOmiNHk3gCqj6nKP3KaEcHghn4ZwwXeGAg3viSds4IF9rAK05S1Uy7frcoYSXiwnJ4zDHRxAfW28KA91ShoSB1_8jCnj66mrrQl62NZoch3Pbg_agEUtjt7oO7IoxUkiByvKHA"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-label-sm text-label-sm font-semibold">
+            Rak A-04
+          </span>
+</div>
+<div class="flex-1 flex flex-col justify-between h-full gap-3 w-full">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">White Lily Casablanka</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">3–4 Kelopak Kuncup/Mekar</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Stok Cukup
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Batch <span class="font-mono text-on-surface font-semibold">#BATCH-2410-B</span> • Masuk: 23 Okt • Expired Kesegaran: <span class="text-on-surface font-medium">02 Nov (10 hari tersisa)</span>
+</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-surface-container-low text-body-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Stok Siap</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">18 <span class="font-body-sm text-body-sm font-normal text-on-surface">Tangkai</span></span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Beli</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Rp 42.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Jual</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Rp 75.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Supplier</span>
+<span class="font-label-md text-label-md font-medium text-on-surface truncate block">Holland Flora</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" type="button">
+              Detail Tangkai
+            </button>
+<button class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors" type="button">
+              + Restock Batch
+            </button>
+</div>
+</div>
+</div>
+<!-- Flower Card 4: Baby's Breath Import Belanda (Menipis) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow flex flex-col md:flex-row gap-5 items-start">
+<div class="w-full md:w-36 h-36 rounded-lg overflow-hidden shrink-0 relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cloud of pure white Million Stars Gypsophila Baby's breath stems tied with raffia twine, soft airiness, macro botanical detail with delicate floral architecture, high end floral atelier styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUWX85D51dP2JEM9zkdRA8c-FPUyhRadCKK55se9Q9hs1m74WuXIKbcchburfehI76DaeIZfoaGYzpzGFQfh1S2OTDtRl4iQrqOkNEjg2DUf6Z5sq1GraopoZsvKbDPbP5gXfyEtWuyKWCYxHbH-dnPViFuxKC_FOTehp_n6OPfNJbnyagSNEveGGrcdZogK6rnD8qxSlMgq_A5Kv_bjavODTTrDSiuEXyLwcm_Ww"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-label-sm text-label-sm font-semibold">
+            Rak C-02
+          </span>
+</div>
+<div class="flex-1 flex flex-col justify-between h-full gap-3 w-full">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Baby's Breath Import Belanda</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">Super White Million Stars</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                Menipis (4 Ikat)
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Batch <span class="font-mono text-on-surface font-semibold">#BATCH-2410-D</span> • Masuk: 20 Okt • Expired Kesegaran: <span class="text-on-surface font-medium">27 Okt (3 hari tersisa)</span>
+</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-surface-container-low text-body-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Stok Siap</span>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">4 <span class="font-body-sm text-body-sm font-normal text-on-surface">Ikat Besar</span></span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Beli</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Rp 85.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Harga Jual</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Rp 140.000</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Supplier</span>
+<span class="font-label-md text-label-md font-medium text-on-surface truncate block">Holland Flora</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" type="button">
+              Detail Ikat
+            </button>
+<button class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors" type="button">
+              + Restock Batch
+            </button>
+</div>
+</div>
+</div>
+<!-- Flower Card 5 & 6 Compact Grid (Eucalyptus & Peony Sarah Bernhardt) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Eucalyptus -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col justify-between gap-4">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-secondary">Foliage Aromatik</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Eucalyptus Cinerea Silver Dollar</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Batch #BATCH-2410-E • Rak D-01</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+              35 Ikat (Aman)
+            </span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="text-body-sm">
+<span class="text-on-surface-variant block text-label-sm">Supplier Mitra:</span>
+<span class="font-medium text-on-surface">Kebun Lembang Highland</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" type="button">
+              Kelola Stok
+            </button>
+</div>
+</div>
+<!-- Peony Sarah Bernhardt (Habis/Out of stock) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col justify-between gap-4">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-tertiary">Pre-Order Inbound</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Peony Sarah Bernhardt (Soft Pink)</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tiba Besok 07:00 WIB • Malang Rose Farm</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+              0 Tangkai (Habis)
+            </span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="text-body-sm">
+<span class="text-on-surface-variant block text-label-sm">Status Muatan:</span>
+<span class="font-medium text-tertiary">PO-2024-890 Terkonfirmasi</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-md text-label-md transition-colors" type="button">
+              Lacak Kargo
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Section: 4 Cols Integrated Restock & Inbound Logistics -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- Active Supplier Inbound Orders -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_1px_6px_rgba(0,0,0,0.02)] flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">local_shipping</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Inbound Bunga Masuk</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">2 Pengiriman</span>
+</div>
+<!-- Inbound Shipment 1 -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-label-sm text-primary font-bold">PO-2024-889</span>
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface">Kebun Lembang Highland</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">20 Tkg Hydrangea • 30 Ikat Baby's Breath</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold shrink-0">
+              On The Way
+            </span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 72%"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant pt-0.5">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+              Estimasi Tiba: <strong class="text-on-surface">16:30 WIB Hari Ini</strong>
+</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">Driver: Pak Irawan (Cold-Van)</span>
+</div>
+</div>
+<!-- Inbound Shipment 2 -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-label-sm text-primary font-bold">PO-2024-890</span>
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface">Holland Flora Import</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">15 Ikat Peony Pink • 40 Tkg Tulip Belanda</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-bold shrink-0">
+              Karantina
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant pt-0.5">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">flight_land</span>
+              Tiba: <strong class="text-on-surface">Besok 08:00 WIB</strong>
+</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Cargo Soetta (CGK)</span>
+</div>
+</div>
+</div>
+<!-- Quick Restock Dispatch Form -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_1px_6px_rgba(0,0,0,0.02)] flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-xl">bolt</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Restock Kilat Supplier</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Pemesanan instan untuk varian defisit cold-room langsung ke supplier terverifikasi dengan armada pendingin.
+        </p>
+<form class="flex flex-col gap-3.5 mt-1" onsubmit="event.preventDefault(); alert('Draft PO Terkirim via WhatsApp &amp; Email Supplier!');">
+<!-- Supplier Select -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Pilih Supplier Mitra</label>
+<select class="w-full px-3 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1.5 focus:ring-primary cursor-pointer">
+<option>Kebun Lembang Highland (Prioritas Sameday)</option>
+<option>Holland Flora Import</option>
+<option>Ekuador Direct Import</option>
+<option>Malang Rose Farm</option>
+</select>
+</div>
+<!-- Flower Variety Select -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Varian Bunga Kritis</label>
+<select class="w-full px-3 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1.5 focus:ring-primary cursor-pointer">
+<option>Hydrangea Soft Pink (Defisit 18 Tangkai)</option>
+<option>Baby's Breath Import Belanda (Defisit 6 Ikat)</option>
+<option>Peony Sarah Bernhardt (0 Tangkai)</option>
+</select>
+</div>
+<!-- Quantity and Unit -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Jumlah Tangkai</label>
+<input class="w-full px-3 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1.5 focus:ring-primary" min="5" type="number" value="25"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Pengiriman</label>
+<select class="w-full px-3 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1.5 focus:ring-primary cursor-pointer">
+<option>Sameday Cold-Van</option>
+<option>Express Udara Cargo</option>
+<option>Reguler Chiller Truck</option>
+</select>
+</div>
+</div>
+<!-- Cost Estimation Summary Box -->
+<div class="p-3.5 rounded-lg bg-surface-container flex items-center justify-between text-body-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant block">Estimasi Pengadaan</span>
+<span class="font-label-lg text-label-lg font-bold text-primary">Rp 875.000</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Termin 14 Hari</span>
+</div>
+<button class="w-full mt-1 py-3 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 transition-all shadow-md active:scale-98" type="submit">
+<span class="material-symbols-outlined text-lg">send</span>
+<span>Kirim Draft PO via WhatsApp &amp; Email</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
