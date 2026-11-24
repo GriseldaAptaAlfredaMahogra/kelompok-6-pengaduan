@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 Route::get('/', function (Request $request): RedirectResponse {
-    return to_route($request->user()?->isAdmin() ? 'admin.dashboard' : 'shop.index');
+    $user = $request->user();
+
+    return to_route($user === null ? 'login' : ($user->isAdmin() ? 'admin.dashboard' : 'shop.index'));
 })->name('home');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/login', [SessionController::class, 'create'])->middleware('guest')->name('login');
