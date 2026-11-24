@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -12,6 +13,7 @@ class StoreOrder extends Model
 
     protected $fillable = [
         'order_number',
+        'user_id',
         'customer_name',
         'phone',
         'delivery_address',
@@ -43,9 +45,15 @@ class StoreOrder extends Model
         return $this->hasMany(OrderItem::class, 'order_id');
     }
 
+<<<<<<< HEAD
     public function review(): HasOne
     {
         return $this->hasOne(OrderReview::class, 'order_id');
+=======
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+>>>>>>> 7fd5cbe832d8b5cb4f30f28cbb868771b484628d
     }
 
     public function getStatusLabelAttribute(): string

@@ -38,7 +38,7 @@ class BotanicalStoreTest extends TestCase
 
         $this->get(route('admin.reviews.index'))->assertRedirect(route('login'));
         $this->get(route('admin.dashboard'))->assertRedirect(route('login'));
-        $this->get(route('login'))->assertOk()->assertSee('Ruang merangkai');
+        $this->get(route('login'))->assertOk()->assertSee('Rangkaian pilihan');
 
         $user = User::firstOrFail();
         $this->post(route('login.store'), ['email' => $user->email, 'password' => 'password'])

@@ -13,7 +13,7 @@ class SessionController extends Controller
     public function create(): View|RedirectResponse
     {
         if (Auth::check()) {
-            return to_route('admin.dashboard');
+            return to_route(Auth::user()->isAdmin() ? 'admin.dashboard' : 'shop.index');
         }
 
         return view('auth.login');
@@ -33,8 +33,16 @@ class SessionController extends Controller
         }
 
         $request->session()->regenerate();
+        $user = $request->user();
+        $cartWasAdjusted = $user->mergePendingCart($request->session()->pull('pending_cart', []));
+        $defaultRoute = $user->isAdmin() ? route('admin.dashboard') : route('shop.index');
+        $redirect = redirect()->intended($defaultRoute);
 
-        return redirect()->intended(route('admin.dashboard'));
+        if ($cartWasAdjusted) {
+            $redirect->with('warning', 'Beberapa item keranjang dilewati atau jumlahnya disesuaikan.');
+        }
+
+        return $redirect;
     }
 
     public function destroy(Request $request): RedirectResponse

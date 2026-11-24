@@ -1,7 +1,10 @@
 {
+<<<<<<< HEAD
     "agents": [
         "claude_code"
     ],
+=======
+>>>>>>> 7fd5cbe832d8b5cb4f30f28cbb868771b484628d
     "cloud": true,
     "guidelines": true,
     "mcp": true,
