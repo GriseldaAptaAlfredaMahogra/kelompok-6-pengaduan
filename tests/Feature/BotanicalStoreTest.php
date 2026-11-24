@@ -5,9 +5,11 @@ namespace Tests\Feature;
 use App\Models\Bouquet;
 use App\Models\Flower;
 use App\Models\FlowerBatch;
+use App\Models\OrderReview;
 use App\Models\StoreOrder;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 class BotanicalStoreTest extends TestCase
@@ -27,12 +29,14 @@ class BotanicalStoreTest extends TestCase
         $this->get(route('admin.bouquets.index'))->assertOk()->assertSee('Katalog & Rangkaian');
         $this->get(route('admin.inventory.index'))->assertOk()->assertSee('Katalog Stok Bunga Segar');
         $this->get(route('admin.suppliers.index'))->assertOk()->assertSee('Supplier Atelier');
+        $this->get(route('admin.reviews.index'))->assertOk()->assertSee('Ulasan Pembeli');
     }
 
     public function test_admin_pages_require_a_signed_in_user(): void
     {
         auth()->logout();
 
+        $this->get(route('admin.reviews.index'))->assertRedirect(route('login'));
         $this->get(route('admin.dashboard'))->assertRedirect(route('login'));
         $this->get(route('login'))->assertOk()->assertSee('Ruang merangkai');
 
@@ -90,8 +94,81 @@ class BotanicalStoreTest extends TestCase
         $this->get(route('admin.orders.complete', $order))
             ->assertOk()
             ->assertSee('Pesanan Berhasil')
-            ->assertSee('Selesai & Terkirim');
+            ->assertSee('Selesai & Terkirim')
+            ->assertSee(route('reviews.create', ['order' => $order]), false);
         $this->assertNotNull($order->fresh()->completed_at);
+    }
+
+    public function test_buyer_can_submit_one_signed_review_and_admin_can_view_it(): void
+    {
+        $order = $this->createDeliveredOrder();
+        $reviewUrl = URL::signedRoute('reviews.create', ['order' => $order]);
+
+        $this->get($reviewUrl)->assertOk()->assertSee('Bagaimana rangkaian bunga Anda?');
+        $this->post($reviewUrl, [
+            'rating' => 5,
+            'comment' => "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
+        ])->assertRedirect();
+
+        $this->assertDatabaseHas('order_reviews', [
+            'order_id' => $order->id,
+            'rating' => 5,
+            'comment' => "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
+        ]);
+
+        $this->post($reviewUrl, [
+            'rating' => 1,
+            'comment' => 'Ulasan ganda tidak boleh mengganti ulasan pertama.',
+        ])->assertRedirect();
+        $this->assertDatabaseCount('order_reviews', 1);
+        $this->assertSame(
+            "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
+            OrderReview::where('order_id', $order->id)->value('comment')
+        );
+
+        $this->get(route('admin.reviews.index'))
+            ->assertOk()
+            ->assertSee('Buket &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt; cantik dan tiba tepat waktu.', false)
+            ->assertDontSee("<script>alert('x')</script>", false)
+            ->assertSee('5,0');
+
+        $this->get(route('admin.reviews.index', ['rating' => 1]))
+            ->assertOk()
+            ->assertSee('Belum ada ulasan');
+    }
+
+    public function test_signed_review_link_rejects_tampering_and_orders_that_are_not_delivered(): void
+    {
+        $deliveredOrder = $this->createDeliveredOrder();
+        $invalidUrl = str_replace(
+            'signature=',
+            'signature=invalid',
+            URL::signedRoute('reviews.create', ['order' => $deliveredOrder])
+        );
+        $pendingOrder = $this->createDeliveredOrder('pending');
+        $pendingUrl = URL::signedRoute('reviews.create', ['order' => $pendingOrder]);
+
+        $this->get($invalidUrl)->assertForbidden();
+        $this->get($pendingUrl)->assertNotFound();
+        $this->post($pendingUrl, [
+            'rating' => 5,
+            'comment' => 'Pesanan ini belum selesai diterima.',
+        ])->assertNotFound();
+
+        $this->assertDatabaseCount('order_reviews', 0);
+    }
+
+    public function test_invalid_rating_and_comment_are_not_saved(): void
+    {
+        $order = $this->createDeliveredOrder();
+        $reviewUrl = URL::signedRoute('reviews.create', ['order' => $order]);
+
+        $this->from($reviewUrl)->post($reviewUrl, [
+            'rating' => 6,
+            'comment' => 'Oke',
+        ])->assertSessionHasErrors(['rating', 'comment']);
+
+        $this->assertDatabaseCount('order_reviews', 0);
     }
 
     public function test_cancelling_an_order_returns_reserved_flowers_to_stock(): void
@@ -133,5 +210,17 @@ class BotanicalStoreTest extends TestCase
 
         $this->assertSame(8, $batch->fresh()->quantity);
         $this->assertNotNull($order->fresh()->stock_released_at);
+    }
+
+    private function createDeliveredOrder(string $status = 'delivered'): StoreOrder
+    {
+        return StoreOrder::create([
+            'order_number' => 'BA-REVIEW-'.fake()->unique()->numerify('#####'),
+            'customer_name' => 'Sarah Kinanti',
+            'phone' => '+62 812 0000 0000',
+            'status' => $status,
+            'total' => 250000,
+            'completed_at' => $status === 'delivered' ? now() : null,
+        ]);
     }
 }

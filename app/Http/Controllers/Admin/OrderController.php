@@ -10,8 +10,9 @@ use App\Models\StoreOrder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class OrderController extends Controller
@@ -197,7 +198,10 @@ class OrderController extends Controller
         }
 
         return view('botanical.orders.complete', [
-            'order' => $order->load('items'),
+            'order' => $order->load('items', 'review'),
+            'reviewUrl' => $order->review
+                ? null
+                : URL::signedRoute('reviews.create', ['order' => $order]),
         ]);
     }
 }

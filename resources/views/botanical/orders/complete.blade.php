@@ -10,6 +10,14 @@
         <h1>Pesanan Berhasil<br>Selesai &amp; Terkirim</h1>
         <p>Rangkaian untuk <strong>{{ $order->customer_name }}</strong> telah diselesaikan oleh atelier.</p>
         <div class="completion-facts"><span><small>NOMOR PESANAN</small><strong>#{{ $order->order_number }}</strong></span><span><small>STATUS</small><strong>{{ $order->status_label }}</strong></span><span><small>DISELESAIKAN</small><strong>{{ $order->completed_at?->format('d M Y, H:i') ?? 'Baru saja' }}</strong></span></div>
+        @if ($reviewUrl)
+            <section class="review-share">
+                <span class="material-symbols-outlined">mark_email_read</span>
+                <div><strong>Minta ulasan dari {{ $order->customer_name }}</strong><p>Bagikan tautan ini agar pembeli dapat memberi rating dan menulis ulasan.</p><a href="{{ $reviewUrl }}" target="_blank" rel="noopener">{{ $reviewUrl }}</a></div>
+            </section>
+        @else
+            <p class="review-received"><span class="material-symbols-outlined">verified</span> Ulasan pembeli sudah diterima.</p>
+        @endif
         <div class="completion-actions"><a class="button button-primary" href="{{ route('admin.orders.show', $order) }}"><span class="material-symbols-outlined">receipt_long</span> Lihat Detail Pesanan</a><a class="button button-outline" href="{{ route('admin.orders.create') }}"><span class="material-symbols-outlined">add</span> Buat Pesanan Baru</a></div>
     </section>
     <section class="panel completion-receipt">

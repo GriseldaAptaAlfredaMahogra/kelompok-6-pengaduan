@@ -21,6 +21,7 @@
             <nav class="side-nav" aria-label="Navigasi utama">
                 <a class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}"><span class="material-symbols-outlined">dashboard</span>Ringkasan</a>
                 <a class="{{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="{{ route('admin.orders.index') }}"><span class="material-symbols-outlined">shopping_bag</span>Pesanan Buket <span class="nav-count">{{ \App\Models\StoreOrder::whereNotIn('status', ['delivered', 'cancelled'])->count() }}</span></a>
+                <a class="{{ request()->routeIs('admin.reviews.*') ? 'active' : '' }}" href="{{ route('admin.reviews.index') }}"><span class="material-symbols-outlined">reviews</span>Ulasan Pembeli <span class="nav-count">{{ \App\Models\OrderReview::count() }}</span></a>
                 <a class="{{ request()->routeIs('admin.bouquets.*') ? 'active' : '' }}" href="{{ route('admin.bouquets.index') }}"><span class="material-symbols-outlined">local_florist</span>Katalog &amp; Rangkaian</a>
                 <a class="{{ request()->routeIs('admin.inventory.*') ? 'active' : '' }}" href="{{ route('admin.inventory.index') }}"><span class="material-symbols-outlined">psychiatry</span>Stok Bunga Segar</a>
                 <a class="{{ request()->routeIs('admin.suppliers.*') ? 'active' : '' }}" href="{{ route('admin.suppliers.index') }}"><span class="material-symbols-outlined">local_shipping</span>Supplier</a>

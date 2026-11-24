@@ -5,14 +5,18 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FlowerController;
 use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\ReviewSubmissionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', DashboardController::class)->middleware('auth')->name('home');
 Route::get('/login', [SessionController::class, 'create'])->middleware('guest')->name('login');
 Route::post('/login', [SessionController::class, 'store'])->middleware(['guest', 'throttle:5,1'])->name('login.store');
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('logout');
+Route::get('/ulasan/{order}', [ReviewSubmissionController::class, 'create'])->middleware('signed')->name('reviews.create');
+Route::post('/ulasan/{order}', [ReviewSubmissionController::class, 'store'])->middleware(['signed', 'throttle:10,1'])->name('reviews.store');
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', DashboardController::class)->name('dashboard');
@@ -28,4 +32,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('orders/{order}/complete', [OrderController::class, 'complete'])->name('orders.complete');
     Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
     Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.status');
+    Route::get('reviews', [ReviewController::class, 'index'])->name('reviews.index');
 });
