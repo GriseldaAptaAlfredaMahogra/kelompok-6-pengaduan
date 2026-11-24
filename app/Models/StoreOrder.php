@@ -45,15 +45,15 @@ class StoreOrder extends Model
         return $this->hasMany(OrderItem::class, 'order_id');
     }
 
-<<<<<<< HEAD
     public function review(): HasOne
     {
         return $this->hasOne(OrderReview::class, 'order_id');
-=======
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
->>>>>>> 7fd5cbe832d8b5cb4f30f28cbb868771b484628d
+    
     }
 
     public function getStatusLabelAttribute(): string
