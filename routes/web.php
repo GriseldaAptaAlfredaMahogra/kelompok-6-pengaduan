@@ -9,17 +9,23 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\SupplierController;
+<<<<<<< HEAD
 use App\Http\Controllers\ReviewSubmissionController;
+=======
+>>>>>>> fe603ee893a4a230a0c902d33ebe4f61b4cf7bdd
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\ReviewSubmissionController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 Route::get('/', function (Request $request): RedirectResponse {
-    return to_route($request->user()?->isAdmin() ? 'admin.dashboard' : 'shop.index');
+    $user = $request->user();
+
+    return to_route($user === null ? 'login' : ($user->isAdmin() ? 'admin.dashboard' : 'shop.index'));
 })->name('home');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
