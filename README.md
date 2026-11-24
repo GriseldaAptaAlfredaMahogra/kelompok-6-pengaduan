@@ -27,7 +27,7 @@ Panel admin toko buket bunga berbasis Laravel Blade. Antarmuka mengikuti empat l
    npm run build
    ```
 
-4. Buat akun pemilik atelier satu kali (ganti nilai contoh dengan email dan kata sandi pilihan Anda):
+4. Buat akun pemilik atelier satu kali (ganti nilai contoh dengan email dan kata sandi pilihan Anda). Akun yang dibuat sebelum fitur pendaftaran pelanggan tersedia tetap memiliki akses panel admin:
 
    ```sh
    php artisan tinker
@@ -47,7 +47,7 @@ Panel admin toko buket bunga berbasis Laravel Blade. Antarmuka mengikuti empat l
    php artisan serve
    ```
 
-Buka `http://127.0.0.1:8000`, masuk melalui `/login`, lalu kelola toko di `/admin`.
+Buka `http://127.0.0.1:8000` untuk melihat koleksi dan melakukan pembelian. Pelanggan dapat membuat akun di `/register` atau masuk melalui `/login`; keranjang dan riwayat pesanan tersimpan untuk akun tersebut. Masuk dengan akun pemilik atelier untuk mengelola toko di `/admin`.
 
 ## Fitur
 
@@ -56,6 +56,7 @@ Buka `http://127.0.0.1:8000`, masuk melalui `/login`, lalu kelola toko di `/admi
 - Pencatatan bunga, batch stok/cold-room, tanggal kedaluwarsa, dan restock supplier.
 - Direktori supplier.
 - Pembuatan pesanan dengan detail penerima, bunga tambahan, catatan kustomisasi, dan kartu ucapan.
+- Registrasi pelanggan dengan password ter-hash, keranjang per akun, checkout, dan riwayat pesanan pribadi.
 - Perubahan status pesanan hingga `Selesai & Terkirim`.
 
 Foto produk pada desain Stitch dihosting oleh Google. Jika URL sumber tidak lagi tersedia, tambahkan foto milik toko melalui kolom URL gambar katalog atau sediakan aset lokal.
