@@ -8,15 +8,12 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\SupplierController;
-<<<<<<< HEAD
-use App\Http\Controllers\ReviewSubmissionController;
-=======
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\ReviewSubmissionController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
->>>>>>> 7fd5cbe832d8b5cb4f30f28cbb868771b484628d
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
