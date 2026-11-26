@@ -14,7 +14,7 @@ class ReviewController extends Controller
         $data = $request->validate([
             'rating' => ['nullable', 'integer', 'between:1,5'],
         ]);
-        $reviews = OrderReview::with('order.items')->latest();
+        $reviews = OrderReview::with(['order.items', 'order.user'])->latest();
 
         if (isset($data['rating'])) {
             $reviews->where('rating', $data['rating']);

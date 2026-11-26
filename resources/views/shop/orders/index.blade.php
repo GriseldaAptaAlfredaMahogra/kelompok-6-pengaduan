@@ -8,10 +8,15 @@
         <a class="button button-primary" href="{{ route('shop.index') }}">Lihat koleksi</a>
     </div>
     @forelse ($orders as $order)
-        <a class="customer-order-row panel" href="{{ route('customer.orders.show', $order) }}">
-            <div><span class="eyebrow">{{ $order->order_number }}</span><h2>{{ $order->items->pluck('item_name')->join(', ') }}</h2><small>{{ $order->created_at->format('d M Y, H:i') }}</small></div>
-            <div class="customer-order-meta"><span class="badge badge-{{ $order->status }}">{{ $order->status_label }}</span><strong>Rp {{ number_format((float) $order->total, 0, ',', '.') }}</strong></div>
-        </a>
+        <div class="customer-order-entry">
+            <a class="customer-order-row panel" href="{{ route('customer.orders.show', $order) }}">
+                <div><span class="eyebrow">{{ $order->order_number }}</span><h2>{{ $order->items->pluck('item_name')->join(', ') }}</h2><small>{{ $order->created_at->format('d M Y, H:i') }}</small></div>
+                <div class="customer-order-meta"><span class="badge badge-{{ $order->status }}">{{ $order->status_label }}</span><strong>Rp {{ number_format((float) $order->total, 0, ',', '.') }}</strong></div>
+            </a>
+            @if ($order->status === 'delivered' && ! $order->review)
+                <div class="customer-order-actions"><a class="button button-outline" href="{{ route('reviews.create', $order) }}"><span class="material-symbols-outlined">rate_review</span> Beri Ulasan</a></div>
+            @endif
+        </div>
     @empty
         <div class="empty-state panel"><span class="material-symbols-outlined">receipt_long</span><strong>Belum ada pesanan</strong><p>Pesanan yang Anda buat akan muncul di sini.</p><a class="button button-primary" href="{{ route('shop.index') }}">Jelajahi koleksi</a></div>
     @endforelse

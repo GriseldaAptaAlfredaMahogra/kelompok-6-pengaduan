@@ -43,7 +43,7 @@
                     <article class="review-card">
                         <span class="review-avatar">{{ mb_substr($review->order->customer_name, 0, 1) }}</span>
                         <div class="review-card-main">
-                            <div class="review-card-heading"><div><strong>{{ $review->order->customer_name }}</strong><small>#{{ $review->order->order_number }} · {{ $review->order->items->pluck('item_name')->join(', ') }}</small></div><time datetime="{{ $review->created_at->toDateString() }}">{{ $review->created_at->format('d M Y') }}</time></div>
+                            <div class="review-card-heading"><div><strong>{{ $review->order->user?->name ?? $review->order->customer_name }}</strong><small>#{{ $review->order->order_number }} @if ($review->order->user) · {{ $review->order->user->email }} @endif · {{ $review->order->items->pluck('item_name')->join(', ') }}</small></div><time datetime="{{ $review->created_at->toDateString() }}">{{ $review->created_at->format('d M Y') }}</time></div>
                             <div class="review-stars" role="img" aria-label="Rating {{ $review->rating }} dari 5">
                                 @for ($star = 1; $star <= 5; $star++)
                                     <span class="material-symbols-outlined {{ $star <= $review->rating ? 'filled' : '' }}">star</span>

@@ -460,12 +460,18 @@ h3 { margin-bottom: 0; font-size: 18px; }
 .checkout-total strong { font-size: 15px; }
 .customer-order-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 10px; padding: 17px 19px; transition: background .15s ease; }
 .customer-order-row:hover { background: #f9fbf7; }
+.customer-order-actions { display: flex; justify-content: flex-end; margin: -4px 0 14px; }
 .customer-order-row h2 { margin: 5px 0; font-size: 18px; }
 .customer-order-row small, .customer-order-meta { color: #777e74; font-size: 9px; }
 .customer-order-meta { display: grid; justify-items: end; gap: 8px; }
 .customer-order-meta strong { color: var(--green); font-size: 11px; }
 .customer-order-detail { max-width: 760px; padding: 21px; }
 .customer-order-status { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 18px; color: #777e74; font-size: 10px; }
+.customer-review, .customer-review-prompt { margin-top: 18px; padding: 14px; border: 1px solid #dfe8db; border-radius: 10px; background: #f7f8f2; }
+.customer-review .review-stars { margin: 8px 0 0; }
+.customer-review .submitted-comment { margin-top: 8px; font-size: 13px; }
+.customer-review-prompt { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.customer-review-prompt p { margin: 0; color: #687365; font-size: 10px; line-height: 1.6; }
 .delivery-details { display: grid; gap: 12px; margin: 18px 0 0; padding-top: 17px; border-top: 1px solid var(--line); }
 .delivery-details > div { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 12px; font-size: 10px; }
 .delivery-details dt { color: #777e74; }
@@ -527,7 +533,9 @@ h3 { margin-bottom: 0; font-size: 18px; }
     .cart-line > form:last-child { margin-left: auto; }
     .customer-order-row { align-items: flex-start; flex-direction: column; }
     .customer-order-meta { width: 100%; align-items: center; justify-items: start; grid-template-columns: 1fr auto; }
+    .customer-order-actions { justify-content: flex-start; }
     .customer-order-status { align-items: flex-start; flex-direction: column; }
+    .customer-review-prompt { align-items: flex-start; flex-direction: column; }
     .delivery-details > div { grid-template-columns: 100px minmax(0, 1fr); }
     .store-footer { flex-wrap: wrap; gap: 6px; padding: 13px; font-size: 12px; }
     .page-content { padding: 20px 13px 35px; }

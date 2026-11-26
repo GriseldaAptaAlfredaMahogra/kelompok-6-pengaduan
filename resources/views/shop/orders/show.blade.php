@@ -13,6 +13,24 @@
             <div class="checkout-item"><span>{{ $item->item_name }} × {{ $item->quantity }}</span><strong>Rp {{ number_format((float) $item->line_total, 0, ',', '.') }}</strong></div>
         @endforeach
         <div class="checkout-total"><span>Total pesanan</span><strong>Rp {{ number_format((float) $order->total, 0, ',', '.') }}</strong></div>
+        @if ($order->status === 'delivered')
+            @if ($order->review)
+                <div class="customer-review">
+                    <span class="eyebrow">ULASAN ANDA</span>
+                    <div class="review-stars" role="img" aria-label="Rating {{ $order->review->rating }} dari 5">
+                        @for ($star = 1; $star <= 5; $star++)
+                            <span class="material-symbols-outlined {{ $star <= $order->review->rating ? 'filled' : '' }}">star</span>
+                        @endfor
+                    </div>
+                    <blockquote class="submitted-comment">{{ $order->review->comment }}</blockquote>
+                </div>
+            @else
+                <div class="customer-review-prompt">
+                    <p>Rangkaian sudah sampai? Bagikan pengalaman Anda untuk membantu pelanggan lain.</p>
+                    <a class="button button-primary" href="{{ route('reviews.create', $order) }}"><span class="material-symbols-outlined">rate_review</span> Beri Ulasan</a>
+                </div>
+            @endif
+        @endif
         <dl class="delivery-details">
             <div><dt>Penerima</dt><dd>{{ $order->customer_name }}</dd></div>
             <div><dt>Telepon</dt><dd>{{ $order->phone }}</dd></div>

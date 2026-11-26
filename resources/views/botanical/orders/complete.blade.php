@@ -10,13 +10,15 @@
         <h1>Pesanan Berhasil<br>Selesai &amp; Terkirim</h1>
         <p>Rangkaian untuk <strong>{{ $order->customer_name }}</strong> telah diselesaikan oleh atelier.</p>
         <div class="completion-facts"><span><small>NOMOR PESANAN</small><strong>#{{ $order->order_number }}</strong></span><span><small>STATUS</small><strong>{{ $order->status_label }}</strong></span><span><small>DISELESAIKAN</small><strong>{{ $order->completed_at?->format('d M Y, H:i') ?? 'Baru saja' }}</strong></span></div>
-        @if ($reviewUrl)
+        @if ($order->review)
+            <p class="review-received"><span class="material-symbols-outlined">verified</span> Ulasan pembeli sudah diterima.</p>
+        @elseif ($order->user_id)
             <section class="review-share">
                 <span class="material-symbols-outlined">mark_email_read</span>
-                <div><strong>Minta ulasan dari {{ $order->customer_name }}</strong><p>Bagikan tautan ini agar pembeli dapat memberi rating dan menulis ulasan.</p><a href="{{ $reviewUrl }}" target="_blank" rel="noopener">{{ $reviewUrl }}</a></div>
+                <div><strong>Ulasan dari {{ $order->customer_name }}</strong><p>Pembeli dapat memberikan rating dan ulasan dari halaman Pesanan Saya setelah masuk ke akun.</p></div>
             </section>
         @else
-            <p class="review-received"><span class="material-symbols-outlined">verified</span> Ulasan pembeli sudah diterima.</p>
+            <p class="review-received"><span class="material-symbols-outlined">info</span> Pesanan ini tidak terhubung ke akun pelanggan, sehingga ulasan akun tidak tersedia.</p>
         @endif
         <div class="completion-actions"><a class="button button-primary" href="{{ route('admin.orders.show', $order) }}"><span class="material-symbols-outlined">receipt_long</span> Lihat Detail Pesanan</a><a class="button button-outline" href="{{ route('admin.orders.create') }}"><span class="material-symbols-outlined">add</span> Buat Pesanan Baru</a></div>
     </section>

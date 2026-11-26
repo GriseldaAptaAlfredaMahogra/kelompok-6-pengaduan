@@ -9,7 +9,6 @@ use App\Models\OrderReview;
 use App\Models\StoreOrder;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 class BotanicalStoreTest extends TestCase
@@ -95,20 +94,32 @@ class BotanicalStoreTest extends TestCase
             ->assertOk()
             ->assertSee('Pesanan Berhasil')
             ->assertSee('Selesai & Terkirim')
-            ->assertSee(route('reviews.create', ['order' => $order]), false);
+            ->assertSee('tidak terhubung ke akun pelanggan');
         $this->assertNotNull($order->fresh()->completed_at);
     }
 
-    public function test_buyer_can_submit_one_signed_review_and_admin_can_view_it(): void
+    public function test_buyer_can_submit_one_review_for_their_delivered_order_and_admin_can_view_statistics(): void
     {
-        $order = $this->createDeliveredOrder();
-        $reviewUrl = URL::signedRoute('reviews.create', ['order' => $order]);
+        $admin = auth()->user();
+        $customer = $this->createCustomer();
+        $order = $this->createDeliveredOrder($customer);
+        $reviewUrl = route('reviews.create', ['order' => $order]);
 
+        $this->actingAs($customer)
+            ->get(route('customer.reviews.pending'))
+            ->assertRedirect($reviewUrl);
+
+        $this->actingAs($customer)
+            ->get(route('customer.orders.show', $order))
+            ->assertOk()
+            ->assertSee('Beri Ulasan')
+            ->assertSee($reviewUrl, false);
+        $this->get(route('customer.orders.index'))->assertOk()->assertSee('Beri Ulasan');
         $this->get($reviewUrl)->assertOk()->assertSee('Bagaimana rangkaian bunga Anda?');
-        $this->post($reviewUrl, [
+        $this->post(route('reviews.store', ['order' => $order]), [
             'rating' => 5,
             'comment' => "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
-        ])->assertRedirect();
+        ])->assertRedirect(route('customer.orders.show', $order));
 
         $this->assertDatabaseHas('order_reviews', [
             'order_id' => $order->id,
@@ -116,41 +127,86 @@ class BotanicalStoreTest extends TestCase
             'comment' => "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
         ]);
 
-        $this->post($reviewUrl, [
+        $this->get(route('customer.orders.show', $order))
+            ->assertOk()
+            ->assertDontSee(route('reviews.create', $order), false)
+            ->assertSee("Buket &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt; cantik dan tiba tepat waktu.", false);
+        $this->get(route('customer.orders.index'))
+            ->assertOk()
+            ->assertDontSee(route('reviews.create', $order), false);
+
+        $this->get(route('customer.reviews.pending'))
+            ->assertRedirect(route('customer.orders.index'))
+            ->assertSessionHas('warning', 'Tidak ada pesanan yang menunggu ulasan.');
+
+        $this->post(route('reviews.store', ['order' => $order]), [
             'rating' => 1,
             'comment' => 'Ulasan ganda tidak boleh mengganti ulasan pertama.',
-        ])->assertRedirect();
-        $this->assertDatabaseCount('order_reviews', 1);
+        ])->assertRedirect(route('customer.orders.show', $order));
+        $this->assertSame(1, OrderReview::where('order_id', $order->id)->count());
         $this->assertSame(
             "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
             OrderReview::where('order_id', $order->id)->value('comment')
         );
 
-        $this->get(route('admin.reviews.index'))
+        $secondCustomer = $this->createCustomer('Nadia Putri');
+        $secondOrder = $this->createDeliveredOrder($secondCustomer);
+        $secondOrder->review()->create([
+            'rating' => 3,
+            'comment' => 'Rangkaian tiba dengan indah.',
+        ]);
+
+        $this->actingAs($admin)->get(route('admin.reviews.index'))
             ->assertOk()
             ->assertSee('Buket &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt; cantik dan tiba tepat waktu.', false)
             ->assertDontSee("<script>alert('x')</script>", false)
-            ->assertSee('5,0');
+            ->assertSee('4,0')
+            ->assertSee('Dari 2 ulasan pembeli')
+            ->assertSee('Alya Putri')
+            ->assertSee('Nadia Putri')
+            ->assertSee('Rangkaian tiba dengan indah.');
 
         $this->get(route('admin.reviews.index', ['rating' => 1]))
             ->assertOk()
             ->assertSee('Belum ada ulasan');
     }
 
-    public function test_signed_review_link_rejects_tampering_and_orders_that_are_not_delivered(): void
+    public function test_review_routes_require_login_and_only_allow_the_order_owner(): void
     {
-        $deliveredOrder = $this->createDeliveredOrder();
-        $invalidUrl = str_replace(
-            'signature=',
-            'signature=invalid',
-            URL::signedRoute('reviews.create', ['order' => $deliveredOrder])
-        );
-        $pendingOrder = $this->createDeliveredOrder('pending');
-        $pendingUrl = URL::signedRoute('reviews.create', ['order' => $pendingOrder]);
+        $customer = $this->createCustomer();
+        $otherCustomer = $this->createCustomer();
+        $order = $this->createDeliveredOrder($customer);
+        $reviewUrl = route('reviews.create', ['order' => $order]);
+        $submissionUrl = route('reviews.store', ['order' => $order]);
 
-        $this->get($invalidUrl)->assertForbidden();
-        $this->get($pendingUrl)->assertNotFound();
-        $this->post($pendingUrl, [
+        auth()->logout();
+        $this->get($reviewUrl)->assertRedirect(route('login'));
+        $this->post($submissionUrl, [
+            'rating' => 5,
+            'comment' => 'Ulasan tanpa autentikasi tidak boleh tersimpan.',
+        ])->assertRedirect(route('login'));
+
+        $this->actingAs($otherCustomer)->get($reviewUrl)->assertNotFound();
+        $this->post($submissionUrl, [
+            'rating' => 5,
+            'comment' => 'Ulasan untuk pesanan pelanggan lain tidak boleh tersimpan.',
+        ])->assertNotFound();
+
+        $this->assertDatabaseCount('order_reviews', 0);
+    }
+
+    public function test_customer_cannot_review_an_order_before_it_is_delivered(): void
+    {
+        $customer = $this->createCustomer();
+        $order = $this->createDeliveredOrder($customer, 'pending');
+        $reviewUrl = route('reviews.create', ['order' => $order]);
+
+        $this->actingAs($customer)
+            ->get(route('customer.orders.show', $order))
+            ->assertOk()
+            ->assertDontSee(route('reviews.create', $order), false);
+        $this->get($reviewUrl)->assertNotFound();
+        $this->post(route('reviews.store', ['order' => $order]), [
             'rating' => 5,
             'comment' => 'Pesanan ini belum selesai diterima.',
         ])->assertNotFound();
@@ -160,10 +216,11 @@ class BotanicalStoreTest extends TestCase
 
     public function test_invalid_rating_and_comment_are_not_saved(): void
     {
-        $order = $this->createDeliveredOrder();
-        $reviewUrl = URL::signedRoute('reviews.create', ['order' => $order]);
+        $customer = $this->createCustomer();
+        $order = $this->createDeliveredOrder($customer);
+        $reviewUrl = route('reviews.create', ['order' => $order]);
 
-        $this->from($reviewUrl)->post($reviewUrl, [
+        $this->actingAs($customer)->from($reviewUrl)->post(route('reviews.store', ['order' => $order]), [
             'rating' => 6,
             'comment' => 'Oke',
         ])->assertSessionHasErrors(['rating', 'comment']);
@@ -212,9 +269,18 @@ class BotanicalStoreTest extends TestCase
         $this->assertNotNull($order->fresh()->stock_released_at);
     }
 
-    private function createDeliveredOrder(string $status = 'delivered'): StoreOrder
+    private function createCustomer(string $name = 'Alya Putri'): User
     {
-        return StoreOrder::create([
+        $customer = User::factory()->create(['name' => $name]);
+        $customer->role = 'customer';
+        $customer->save();
+
+        return $customer;
+    }
+
+    private function createDeliveredOrder(User $customer, string $status = 'delivered'): StoreOrder
+    {
+        return $customer->orders()->create([
             'order_number' => 'BA-REVIEW-'.fake()->unique()->numerify('#####'),
             'customer_name' => 'Sarah Kinanti',
             'phone' => '+62 812 0000 0000',

@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 Route::get('/', function (Request $request): RedirectResponse {
-    return to_route($request->user()?->isAdmin() ? 'admin.dashboard' : 'shop.index');
+    $user = $request->user();
+
+    return to_route($user === null ? 'login' : ($user->isAdmin() ? 'admin.dashboard' : 'shop.index'));
 })->name('home');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
@@ -30,9 +32,6 @@ Route::get('/register', [RegisteredUserController::class, 'create'])->middleware
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware(['guest', 'throttle:5,1'])->name('register.store');
 
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('logout');
-
-Route::get('/ulasan/{order}', [ReviewSubmissionController::class, 'create'])->middleware('signed')->name('reviews.create');
-Route::post('/ulasan/{order}', [ReviewSubmissionController::class, 'store'])->middleware(['signed', 'throttle:10,1'])->name('reviews.store');
 
 Route::post('/cart/items', [CartController::class, 'store'])->middleware('throttle:30,1')->name('cart.items.store');
 
@@ -46,6 +45,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/my/orders', [CustomerOrderController::class, 'index'])->name('customer.orders.index');
     Route::get('/my/orders/{order}', [CustomerOrderController::class, 'show'])->name('customer.orders.show');
+    Route::get('/my/review', [ReviewSubmissionController::class, 'pending'])->name('customer.reviews.pending');
+    Route::get('/my/orders/{order}/review', [ReviewSubmissionController::class, 'create'])->name('reviews.create');
+    Route::post('/my/orders/{order}/review', [ReviewSubmissionController::class, 'store'])
+        ->middleware('throttle:10,1')
+        ->name('reviews.store');
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {

@@ -17,7 +17,7 @@ class CustomerOrderController extends Controller
     public function index(Request $request): View
     {
         return view('shop.orders.index', [
-            'orders' => $request->user()->orders()->with('items')->latest()->paginate(12),
+            'orders' => $request->user()->orders()->with(['items', 'review'])->latest()->paginate(12),
         ]);
     }
 
@@ -25,7 +25,7 @@ class CustomerOrderController extends Controller
     {
         $order = $request->user()->orders()
             ->whereKey($order->id)
-            ->with('items')
+            ->with(['items', 'review'])
             ->firstOrFail();
 
         return view('shop.orders.show', ['order' => $order]);
