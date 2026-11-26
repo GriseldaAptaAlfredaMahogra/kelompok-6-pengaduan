@@ -31,6 +31,40 @@ class BotanicalStoreTest extends TestCase
         $this->get(route('admin.reviews.index'))->assertOk()->assertSee('Ulasan Pembeli');
     }
 
+    public function test_public_review_page_shows_verified_reviews_without_buyer_details(): void
+    {
+        $customer = $this->createCustomer('Alya Putri');
+        $deliveredOrder = $this->createDeliveredOrder($customer);
+        $deliveredOrder->items()->create([
+            'item_name' => 'Garden Rose',
+            'quantity' => 1,
+            'unit_price' => 250000,
+            'line_total' => 250000,
+        ]);
+        $deliveredOrder->review()->create([
+            'rating' => 5,
+            'comment' => "Buket <script>alert('x')</script> cantik dan tiba tepat waktu.",
+        ]);
+
+        $pendingOrder = $this->createDeliveredOrder($customer, 'pending');
+        $pendingOrder->review()->create([
+            'rating' => 1,
+            'comment' => 'Ulasan pesanan yang belum diterima.',
+        ]);
+        auth()->logout();
+
+        $this->get(route('shop.reviews.index'))
+            ->assertOk()
+            ->assertSee(route('shop.reviews.index'), false)
+            ->assertSee('Pembeli terverifikasi')
+            ->assertSee('Garden Rose')
+            ->assertSee('Buket &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt; cantik dan tiba tepat waktu.', false)
+            ->assertDontSee("<script>alert('x')</script>", false)
+            ->assertDontSee($customer->email)
+            ->assertDontSee('Ulasan pesanan yang belum diterima.')
+            ->assertSee('1 ulasan terverifikasi');
+    }
+
     public function test_admin_pages_require_a_signed_in_user(): void
     {
         auth()->logout();
@@ -130,7 +164,7 @@ class BotanicalStoreTest extends TestCase
         $this->get(route('customer.orders.show', $order))
             ->assertOk()
             ->assertDontSee(route('reviews.create', $order), false)
-            ->assertSee("Buket &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt; cantik dan tiba tepat waktu.", false);
+            ->assertSee('Buket &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt; cantik dan tiba tepat waktu.', false);
         $this->get(route('customer.orders.index'))
             ->assertOk()
             ->assertDontSee(route('reviews.create', $order), false);

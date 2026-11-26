@@ -17,6 +17,9 @@
             <a href="{{ route('shop.index') }}">Koleksi</a>
             @auth
                 <a href="{{ route('customer.orders.index') }}">Pesanan Saya</a>
+            @endauth
+            <a href="{{ route('shop.reviews.index') }}">Ulasan Pembeli</a>
+            @auth
                 @if (! auth()->user()->isAdmin())
                     <a href="{{ route('customer.reviews.pending') }}">Beri Ulasan</a>
                 @endif

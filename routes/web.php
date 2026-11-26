@@ -13,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\ReviewSubmissionController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ShopReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -24,6 +25,7 @@ Route::get('/', function (Request $request): RedirectResponse {
 })->name('home');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/reviews', [ShopReviewController::class, 'index'])->name('shop.reviews.index');
 
 Route::get('/login', [SessionController::class, 'create'])->middleware('guest')->name('login');
 Route::post('/login', [SessionController::class, 'store'])->middleware(['guest', 'throttle:5,1'])->name('login.store');
